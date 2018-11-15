@@ -1,0 +1,552 @@
+/*!
+ * Bootstrap Reboot v4.0.0-beta.2 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
+ */
+
+
+/* html { */
+/*   font-family: sans-serif; */
+/*   line-height: 1.15; */
+/*   -webkit-text-size-adjust: 100%; */
+/*   -ms-text-size-adjust: 100%; */
+/*   -ms-overflow-style: scrollbar; */
+/*   -webkit-tap-highlight-color: transparent; */
+/* } */
+
+/* @-ms-viewport { */
+/*   width: device-width; */
+/* } */
+
+/* body { */
+/*     margin: 0; */
+/*   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+/*   font-size: 1rem; */
+/*   font-weight: 400; */
+/*   line-height: 1.5; */
+/*   color: #212529; */
+/*   text-align: left; */
+/*   background-color: #fff; */
+/* } */
+
+/* [tabindex="-1"]:focus { */
+/*   outline: 0 !important; */
+/* } */
+
+/* hr { */
+/*   box-sizing: content-box; */
+/*   height: 0; */
+/*   overflow: visible; */
+/* } */
+
+/* h1, h2, h3, h4, h5, h6 { */
+/*   margin-top: 0; */
+/*   margin-bottom: 0.5rem; */
+/* } */
+
+.modal-inner {
+    font-size: 80px;
+}
+.modal-inner img {
+  vertical-align: middle;
+  border-style: none;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+/* svg:not(:root) { */
+/*   overflow: hidden; */
+/* } */
+
+body {
+  background-color:#2a3698;
+  height:100%;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+    overflow-y:hidden;
+}
+
+
+.table-cell {
+    width: calc(90% / var(--categories));
+    background-color:#2a3698;
+}
+
+th#table-cell {
+
+}
+.points {
+    font-size: 40px;
+}
+#question-row {
+    /* height: calc((100% - var(--header_height)) / var(--grades)); */
+    height: calc(100% / (var(--grades)+1));
+}
+#categories {
+    /* height: var(--header_height); */
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+/* #question-grid { */
+/*     margin-top:5px; */
+/* } */
+
+/* #question-grid .table-row:first-child { */
+/*     border-top:3px solid black; */
+/* } */
+
+/* #question-grid .table-row:last-child { */
+/*     border-bottom:3px solid black; */
+/* } */
+
+/* #question-grid .table-row { */
+/*     border-left:3px solid black; */
+/*     border-right:3px solid black; */
+/* } */
+
+/* #question-grid .table-cell { */
+/*     border:3px solid black; */
+/*     vertical-align:middle; */
+/* } */
+
+/* #question-grid .table-cell-inner { */
+/*     transform: translateY(-50%); */
+/*     top: 50%; */
+/*     position: relative; */
+/* } */
+
+/* #categories .table-cell-inner { */
+/*     transform: translateY(-100%); */
+/*     top: 100%; */
+/*     position: relative; */
+/*     margin-left:10px; */
+/*     margin-right:10px; */
+/* } */
+
+/* #question-grid .table-cell-inner h3 { */
+/*     font-size:36px; */
+/* } */
+
+#question-row .table-cell {
+    font-size: 24px;
+    vertical-align:middle;
+    text-align:center;
+    cursor:pointer;
+    border:3px solid black;
+    color: #fff;
+    border-radius:5px;
+}
+
+
+#question-row .table-cell:hover,
+#question-row .table-cell:focus,
+#question-row .table-cell.active {
+    /* border-color:#ffff00; */
+    border-color:#666;
+    border-style:solid;
+}
+
+
+#question-row .table-cell:focus {
+    border-style:dotted;
+}
+
+#question-row .table-cell.active,
+#question-row .table-cell:hover {
+    border-style:solid;
+}
+
+#categories {
+    border-left:3px solid transparent;
+    border-right:3px solid transparent;
+}
+
+#categories .table-cell {
+    border-left:3px solid transparent;
+    border-right:3px solid transparent;
+}
+
+.solved-by-team-1 {
+    background-color: green;
+}
+.team-1 {
+    color:green
+}
+.empty .points{
+    opacity:0;
+}
+
+.solved-by-team-2 {
+    background-color: red;
+}
+.team-2 {
+    color: red;
+}
+.solved-by-team-3 {
+    background-color: yellow;
+}
+.team-3 {
+    color: yellow;
+}
+.solved-by-team-4 {
+    background-color: orange;
+}
+.team-4 {
+    color: orange;
+}
+.solved-by-team-5 {
+    background-color: purple;
+}
+.team-5 {
+    color: purple;
+}
+.solved-by-team-6 {
+    background-color: brown;
+}
+.team-6 {
+    color: brown;
+}
+
+
+.modal-wrapper {
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height:100%; /* stupid safari */
+    width:100%; /* stupid safari */
+}
+
+/* .modal { */
+/*     position:relative; */
+/*     top:50%; */
+/*     /\*left:50%;*\/ */
+/*     /\*right:5%;*\/ */
+/*     transform:translate(0%, -50%); */
+/*     background-color:#ffffff; */
+/*     z-index:2; */
+/*     border-radius:5px; */
+/*     background-color:#efefef; */
+/*     overflow:auto; */
+/*     max-height:calc(100% - 50px); */
+/*     max-width:1000px; */
+/*     margin-left:auto; */
+/*     margin-right:auto; */
+/* } */
+
+
+#tableau, #title-tableau {
+    width: 100%;
+    height: 100%;
+    /* border-collapse: collapse; */
+    border-collapse: separate;
+    border-spacing: 0px;
+    border:3px solid black;
+    table-layout: fixed;
+    padding: 0px 0px 0px 0px ;
+    margin: 0px 0px 0px 0px ;
+    background-color: black;
+}
+
+#teams-modal {
+    background-color:rgba(0,0,0,.5);
+    text-align:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+}
+
+#teams-modal .team {
+    border-radius:15px;
+    display:inline-block;
+    margin-left:10px;
+    margin-right:10px;
+    border:1px solid black;
+    padding:5px;
+    min-width:200px;
+}
+
+#teams-modal h3.name {
+    border-bottom:2px solid black;
+    font-size:30px;
+    text-align:center;
+    color:black;
+    display:inline-block;
+}
+
+#teams-modal h3.score {
+    background-color: #2a3698;
+    border:1px solid black;
+    font-size:50px;
+    color: #fff;
+}
+
+
+.score-control {
+    display: table;
+    width: 100%
+}
+.score-control span {
+    display:table-cell;
+    vertical-align: middle;
+    border:1px solid black;
+    padding:5px;
+    width:45%;
+    color:white;
+    font-size:50px;
+    line-height:30px;
+    cursor:pointer;
+    background-color:white;
+    font-family:monospace;
+    font-weight:bold;
+}
+
+.score-control .plus {
+    color:#2da94e;
+}
+
+.score-control .minus {
+    color:#ff0000;
+}
+
+#gameplay {
+    filter: blur(20px);
+    height:100%; /* stupid firefox */
+    width:100%;
+    /* display:inline-block; */
+}
+
+html, body {
+    overflow:hidden;
+    height:100%;
+}
+
+#categories .table-cell {
+    font-size:34px;
+    text-align:center;
+    color:#fff;
+    vertical-align: bottom;
+}
+
+#question-row {
+border:3px solid black;
+}
+
+
+.hide {
+    display:none;
+}
+
+
+#riddle-modal {
+    transform-origin:top left;
+    background-color:#2a3698;
+    border:3px solid #ffff00;;
+    max-width:100%;
+    max-height:100%;
+    height:100%;
+    width:100%;
+}
+
+.modal-inner img{
+    max-width:50%;
+    max-height:50%;
+    height:50%;
+    width:auto
+}
+
+#riddle-modal {
+    max-height:100%;
+    max-width:100%;
+    margin-left:0px;
+    margin-right:0px;
+}
+
+#riddle-modal-table {
+    width:100%;
+    height:100%;
+}
+
+#riddle-modal-table td {
+    padding:5px;
+    text-align:center;
+}
+
+
+.expanded {
+    transition:.5s all ease;
+    z-index: 100;
+}
+
+.modal-inner {
+    color:#fff;
+    text-align:center;
+    overflow:auto;
+    padding:0px;
+    /* padding-left:20px; */
+    /* padding-right:20px; */
+    height:100%;
+    width:100%;
+}
+
+#riddle-title {
+    padding:5px;
+    text-align:center;
+    color:#fff;
+    background-color:#151b4b;
+    /* display on top, regardless of source code order: */
+    font-weight:bold;
+    padding-right:10%;
+    display:block;
+}
+
+#riddle-title td:nth-child(1) {
+    width:30%;
+    text-align:center;
+}
+#riddle-title td:nth-child(2) {
+    width:15%;
+    text-align:right;
+}
+#riddle-title td:nth-child(3) {
+    text-align:right;
+}
+
+/* .clue, .solution { */
+/*     margin:auto; */
+/* } */
+
+#solution-button, #continue-button {
+    cursor:pointer;
+}
+
+@keyframes reveal-animation {
+    0% {
+        top: 100%;
+        opacity:0;
+       }
+    100% {
+        top: 0%;
+          opacity:1;
+        }
+}
+.solution {
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+}
+.reveal {
+    position:absolute;
+    top: 0%;
+    left: 0%;
+    animation-name: reveal-animation;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    display: flex;
+    border-top: 3px dotted white;
+    background-color:#2a3698;
+}
+
+kbd
+{
+
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-family: monospace, monospace;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
+.solution, .clue {
+    display:none;
+}
+
+#options-modal {
+    background-color:rgba(0,0,0,.5);
+    justify-content: center;
+    align-items:center;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+@keyframes category-intro-in-animation {
+    0% {
+        left: 100%;
+        opacity:0;
+       }
+    100% {
+        left: 0%;
+        opacity:1;
+        }
+}
+@keyframes category-intro-out-animation {
+    0% {
+        left: 0%;
+        opacity:1;
+       }
+    100% {
+        left: -100%;
+        opacity:0;
+        }
+}
+.category-in-animation {
+    animation-name: category-intro-in-animation;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+}
+.category-out-animation {
+    animation-name: category-intro-out-animation;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-in;
+}
+
+#category-intro-modal {
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 120px;
+    width: 100%;
+    height: 100%;
+}
+
+.symbol-box {
+    display:none;
+    position:absolute;
+    font-size:100px;
+    top:50%;
+    left:50%;
+    z-index: 200;
+}
+@keyframes symb-animation {
+    0% {transform: scale(0,0);
+        opacity:0;
+       }
+    50% {opacity:1;}
+    100% {transform: scale(20,20);
+          opacity:0;
+        }
+}
+.symbol-animation {
+    animation-name: symb-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+}
