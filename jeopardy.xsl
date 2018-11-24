@@ -21,6 +21,17 @@
           }
         </style>
 
+        <script>
+          <!-- for XSLT 2 this could be simple, but this is for XSLT 1.0: -->
+          <xsl:variable name="max_points">
+            <xsl:for-each select="/jeopardy/points">
+              <xsl:sort select="." data-type="number" order="descending"/>
+              <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+            </xsl:for-each>
+          </xsl:variable>
+          var max_points = <xsl:value-of select="$max_points" />
+        </script>
+
         <link rel="stylesheet" href="jeopardy.css"/>
         <link rel="stylesheet" type="text/css" href="celebrate.css" />
         <script src="jquery.min.js"></script>
@@ -57,7 +68,7 @@
                     able to access it inside the inner nested for-each
                 -->
                 <xsl:variable name="points">
-                  <xsl:value-of select="./text()"/>
+                  <xsl:value-of select="./@value"/>
                 </xsl:variable>
                 <xsl:variable name="ipoints">
                   <xsl:number />
@@ -84,6 +95,18 @@
               </tr>
             </xsl:for-each>
           </table>
+        </div>
+
+        <div id="daily-double-modal" class="modal-wrapper">
+          <h1>Double Jeopardy!</h1>
+
+          <p>
+            Einsatz:
+            <span id="daily-double-amount" contenteditable="true">999</span>
+          </p>
+
+          <div id="daily-double-team">
+          </div>
         </div>
 
         <div class="symbol-box">

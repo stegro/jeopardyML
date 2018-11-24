@@ -17,15 +17,21 @@ and displaying questions, and managing scores.
 ### Instructions:
 
  1. You copy jeopardy.xml into a new file, say myjeopardy.xml
- 2. Edit myjeopardy.xml with a Texteditor and fill it with your own content.
+ 2. Edit myjeopardy.xml with a texteditor and fill it with your own content.
  3. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
     All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 
 ### Notes:
 
   * this is made for big screens, not for mobile phones.
-  * points values, number of categories and number of questions are arbitrary
-  * all categories must have same number of questions (i.e. no empty cells in the first hand)
+  * points values, number of categories and number of questions are arbitrary and
+    are all defined in the xml file
+  * a random cell will be made a "Daily Double". Only the player who chose the cell
+    is allowed to answer, but this rule must be enforced by the show host, of course.
+    After placing bet, the mechanics of solving the riddle is identical to the
+    other cells.
+  * all categories must have same number of questions (i.e. no empty cells in the
+    first hand)
   * controls are supposed to be done with keyboard as much as possible, to avoid
     the mouse pointer on the screen.
   * you may put arbitrary XHTML content into the clues and solutions
@@ -46,7 +52,6 @@ and displaying questions, and managing scores.
       and would like to correct the team that has solved.).
       This will also take away the points awarded to the old team and give them to the new team.
     - "[up]","[down]","[left]","[right]", keyboard arrows to move the cell selector
-
  * At the scores screen:
     - *[ESC]* to leave it
     - enter credits and team names as you like
@@ -54,6 +59,12 @@ and displaying questions, and managing scores.
        the selected cell
  * At the options screen:
     - change number of teams and hit the button to leave
+ * At the Daily Double screen:
+    - *[up]*,*[down]* to change the teams score that is displayed
+    - enter the amount via keyboard. If it is <5 or larger than the maximum points
+      in this game (i.e. 500 in the template) or the score of the team, you cannot
+      proceed.
+    - *[SPACE]* to proceed to the riddle screen
 
 And this is what this game is all about:
 
@@ -72,5 +83,5 @@ And this is what this game is all about:
  * arrange score boxes in a grid
  * proper localisation
  * a neat (animated?) screen to celebrate the winner
- * daily double, double jeopardy, final jeopardy or other special things
+ * double jeopardy, final jeopardy
  * test with other browsers

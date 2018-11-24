@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="jeopardy.xsl"?>
 <jeopardy>
-  <points>100</points>
-  <points>200</points>
-  <points>300</points>
-  <points>400</points>
-  <points>500</points>
+  <points value="100" >100</points>
+  <points value="200" >200</points>
+  <points value="300" >300</points>
+  <points value="400" >400</points>
+  <points value="500" >500</points>
 
   <category>
     <title>Category 1</title>

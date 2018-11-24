@@ -131,6 +131,22 @@ th#table-cell {
     background-color: black;
 }
 
+#daily-double-modal {
+    background-color:rgba(0,0,0,.5);
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    color: #fff;
+    font-size: 60px;
+}
+#daily-double-modal h1 {
+    font-size: 80px;
+}
+#daily-double-modal #daily-double-amount {
+    font-size: 60px;
+}
+
 #teams-modal {
     background-color:rgba(0,0,0,.5);
     text-align:center;
@@ -139,7 +155,8 @@ th#table-cell {
     align-items:center;
 }
 
-#teams-modal .team {
+.team {
+    text-align:center;
     border-radius:15px;
     display:inline-block;
     margin-left:10px;
@@ -149,7 +166,7 @@ th#table-cell {
     min-width:200px;
 }
 
-#teams-modal h3.name {
+.team h3.name {
     border-bottom:2px solid black;
     font-size:30px;
     text-align:center;
@@ -157,7 +174,7 @@ th#table-cell {
     display:inline-block;
 }
 
-#teams-modal h3.score {
+.team h3.score {
     background-color: #2a3698;
     border:1px solid black;
     font-size:50px;
@@ -432,3 +449,8 @@ kbd
     border-style:solid;
 }
 
+/* for debugging: mark the daily double cell*/
+/* #question-row .daily-double { */
+/*     border-color:#00ffff; */
+/*     border-style:dotted; */
+/* } */

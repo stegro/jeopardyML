@@ -1,5 +1,4 @@
 
-
 var icategory = -1;
 var categories = $('#categories .table-cell').length;
 var grades = $('#tableau #question-row').length;
@@ -22,12 +21,17 @@ var KEYCODE_right = 39
 var KEYCODE_down = 40
 
 var nteams;
+var iteam = 1;
 
 var modal = function(){}
 
 function init(){
-        setTeams();
-        modal.showCategoryIntro();
+    setTeams();
+    modal.showCategoryIntro();
+
+    var idaily_double = parseInt(categories * grades * Math.random());
+    $cell = $($('#tableau #question-row .table-cell').get(idaily_double))
+    $cell.addClass('daily-double');
 }
 
 function setTeams(){
@@ -71,7 +75,6 @@ function moveSelector(keycode){
     $($($('#tableau #question-row').get(irow_selector)).children().get(icol_selector)).addClass('selected-cell')
 }
 
-
 modal.revealSolution = function(){
     var solution = $('#riddle-modal').find(".solution")
     solution.css({
@@ -81,56 +84,106 @@ modal.revealSolution = function(){
     solution.addClass("reveal");
 }
 
+modal.showDailyDouble = function(points){
+    $('#gameplay').css("filter", "blur(5px)");
+    $('#daily-double-modal').css({
+        "display": "flex"
+    });
+    $('#daily-double-amount').text(points);
+    $('.expanded').removeClass("expanded");
+    $('#daily-double-modal').addClass("expanded");
+    var iteam = 1
+    $('#daily-double-team').html(
+        $("#team"+iteam).prop("outerHTML")
+    );
+    $('#daily-double-team .score-control').hide()
+    $('#daily-double-amount').focus()
+    modal.setHandlers();
+}
+
+modal.hideDailyDouble = function(){
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    var amount = parseInt($('#daily-double-amount').text());
+    if (!isNumber(amount)) {
+        throw "Amount is not a valid number."
+    }
+
+    var score = parseInt($("#team"+iteam).find(".score").text())
+
+    if(amount < 5){
+        throw "Amount is too small."
+    }else if(amount > max_points && amount > score){
+        throw "Amount is too large."
+    }
+    $('.selected-cell').attr("data-points", amount);
+
+
+        $('#gameplay').css("filter", "blur(0px)");
+        $('#daily-double-modal').hide()
+        $('.expanded').removeClass("expanded");
+        modal.setHandlers();
+}
+
 modal.showRiddle = function(cell){
+
     $('.selected-cell').removeClass("selected-cell");
     $(cell).addClass("selected-cell");
-    icol_selector = $(cell).closest(".table-row").children().index(cell);
-    irow_selector = $('#tableau #question-row').index($(cell).closest(".table-row"))
-
-    var category = $($("#categories .table-cell").get(position)).text()
     var points = $(cell).attr("data-points");
-    $('#category-points-title').text(category + " für " + points);
-    var bbox = cell.getBoundingClientRect();
 
-    // replace whatever is on the modal screen with clue and solution
-    $('#riddle-modal .modal-inner').html(
-        $(cell).find(".clue").prop("outerHTML") +
-            $(cell).find(".solution").prop("outerHTML")
-    )
+    if($(cell).hasClass("daily-double")) {
+        modal.showDailyDouble(points);
+    }else{
 
-    $('#riddle-modal .modal-inner').scrollTop(0)
+        icol_selector = $(cell).closest(".table-row").children().index(cell);
+        irow_selector = $('#tableau #question-row').index($(cell).closest(".table-row"))
 
-    // get access to clue and solution elements
-    $('#riddle-modal .clue').css({
-        "display": "block"
-    });
+        var category = $($("#categories .table-cell").get(icol_selector)).text()
+        $('#category-points-title').text(category + " für " + points);
+        var bbox = cell.getBoundingClientRect();
 
-    // draw a baby version of the modal screen
-    $('#riddle-modal').css({
-        transform: "translate(" + bbox.x + "px, " + bbox.y  + "px) scale(" + (bbox.width/$(window).width()) + ", " + (bbox.height / $(window).height()) + ")",
-        "display": "inline-block",
-    })
+        // replace whatever is on the modal screen with clue and solution
+        $('#riddle-modal .modal-inner').html(
+            $(cell).find(".clue").prop("outerHTML") +
+                $(cell).find(".solution").prop("outerHTML")
+        )
 
-    $('.expanded').removeClass("expanded");
-    $('#riddle-modal').addClass("expanded");
-    modal.setHandlers()
+        $('#riddle-modal .modal-inner').scrollTop(0)
 
-
-    // wait a bit, then animate the transform
-    setTimeout(function(){
-
-        $('#riddle-modal').css({
-            top:0,
-            left:0,
-            bottom:0,
-            right:0,
-            width: '100%',
-            height: '100%',
-            borderWidth:0,
-            transform: "translate(0px, 0px) scale(1)"
+        // get access to clue and solution elements
+        $('#riddle-modal .clue').css({
+            "display": "block"
         });
-    }, 500);
 
+        // draw a baby version of the modal screen
+        $('#riddle-modal').css({
+            transform: "translate(" + bbox.x + "px, " + bbox.y  + "px) scale(" + (bbox.width/$(window).width()) + ", " + (bbox.height / $(window).height()) + ")",
+            "display": "inline-block",
+        })
+
+        $('.expanded').removeClass("expanded");
+        $('#riddle-modal').addClass("expanded");
+        modal.setHandlers()
+
+
+        // wait a bit, then animate the transform
+        setTimeout(function(){
+
+            $('#riddle-modal').css({
+                top:0,
+                left:0,
+                bottom:0,
+                right:0,
+                width: '100%',
+                height: '100%',
+                borderWidth:0,
+                transform: "translate(0px, 0px) scale(1)"
+            });
+        }, 500);
+    }
 }
 
 modal.hideRiddle = function(){
@@ -235,6 +288,36 @@ modal.setHandlers = function(){
                 modal.hideScores();
             }
         });
+    }else if($('#daily-double-modal').hasClass("expanded")) {
+        $(window).on("keydown.daily-double-modal", function(e){
+            if(e.keyCode == KEYCODE_SPACE){
+                e.preventDefault();
+                try{
+                    modal.hideDailyDouble()
+                    $(".selected-cell").removeClass("daily-double");
+                    $(".selected-cell").click()
+                }catch(err){
+                    console.log(err);
+                    console.log(err.message);
+                }
+            }else if(e.keyCode == KEYCODE_up){
+                e.preventDefault();
+                // iteam is 1-based, so cycling with modulo goes like this:
+                iteam = (iteam - 1 + 1 + nteams) % nteams + 1;
+                $('#daily-double-team').html(
+                    $("#team"+iteam).prop("outerHTML")
+                );
+                $('#daily-double-team .score-control').hide()
+            }else if(e.keyCode == KEYCODE_down){
+                e.preventDefault();
+                // iteam is 1-based, so cycling with modulo goes like this:
+                iteam = (iteam - 1 - 1 + nteams) % nteams + 1;
+                $('#daily-double-team').html(
+                    $("#team"+iteam).prop("outerHTML")
+                );
+                $('#daily-double-team .score-control').hide()
+            }
+        });
     }else if($('#riddle-modal').hasClass("expanded")) {
         $(window).on("keydown.riddle-modal", function(e){
             if(e.keyCode == KEYCODE_ESC){
@@ -249,7 +332,7 @@ modal.setHandlers = function(){
                 modal.hideRiddle();
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
-                iteam = e.keyCode-KEYCODE_1+1;
+                var iteam = e.keyCode-KEYCODE_1+1;
 
                 var $score = $("#team"+iteam).find(".score")
                 var score = parseInt($score.text())
