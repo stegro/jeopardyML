@@ -26,10 +26,10 @@
           <xsl:variable name="max_points">
             <xsl:for-each select="/jeopardy/points">
               <xsl:sort select="." data-type="number" order="descending"/>
-              <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+              <xsl:if test="position() = 1"><xsl:value-of select="." /></xsl:if>
             </xsl:for-each>
           </xsl:variable>
-          var max_points = <xsl:value-of select="$max_points" />
+          var max_points = <xsl:copy-of select="$max_points" />
         </script>
 
         <link rel="stylesheet" href="jeopardy.css"/>
@@ -68,7 +68,7 @@
                     able to access it inside the inner nested for-each
                 -->
                 <xsl:variable name="points">
-                  <xsl:value-of select="./@value"/>
+                  <xsl:value-of select="./text()"/>
                 </xsl:variable>
                 <xsl:variable name="ipoints">
                   <xsl:number />
