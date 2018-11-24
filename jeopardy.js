@@ -4,6 +4,9 @@ var icategory = -1;
 var categories = $('#categories .table-cell').length;
 var grades = $('#tableau #question-row').length;
 
+var irow_selector = 0;
+var icol_selector = 0;
+
 var KEYCODE_ESC = 27
 var KEYCODE_SPACE = 32
 var KEYCODE_1 = 49
@@ -54,11 +57,9 @@ function animateSymbol(text, extraclass){
     }, 1500)
 }
 
-var irow_selector = 0;
-var icol_selector = 0;
 function moveSelector(keycode){
     if(keycode == KEYCODE_right) {
-        icol_selector = (icol_selector + 1) % categories;
+        icol_selector = (icol_selector + 1 + categories) % categories;
     }else if(keycode == KEYCODE_left) {
         icol_selector = (icol_selector - 1 + categories) % categories;
     }else if(keycode == KEYCODE_up) {
@@ -66,9 +67,8 @@ function moveSelector(keycode){
     }else if(keycode == KEYCODE_down) {
         irow_selector = (irow_selector + 1 + grades) % grades;
     }
-    $('.active').removeClass('active')
-    $($($('#tableau #question-row').get(irow_selector)).get(icol_selector)).addClass('active')
-    // alert(irow_selector + ' ' + icol_selector);
+    $('.selected-cell').removeClass('selected-cell')
+    $($($('#tableau #question-row').get(irow_selector)).children().get(icol_selector)).addClass('selected-cell')
 }
 
 
@@ -82,9 +82,11 @@ modal.revealSolution = function(){
 }
 
 modal.showRiddle = function(cell){
-    $('.active-question').removeClass("active-question");
-    $(cell).addClass("active-question");
-    var position = $(cell).closest(".table-row").children().index(cell);
+    $('.selected-cell').removeClass("selected-cell");
+    $(cell).addClass("selected-cell");
+    icol_selector = $(cell).closest(".table-row").children().index(cell);
+    irow_selector = $('#tableau #question-row').index($(cell).closest(".table-row"))
+
     var category = $($("#categories .table-cell").get(position)).text()
     var points = $(cell).attr("data-points");
     $('#category-points-title').text(category + " für " + points);
@@ -243,7 +245,7 @@ modal.setHandlers = function(){
                 modal.revealSolution();
             }else if(e.keyCode == KEYCODE_0){
                 e.preventDefault();
-                $(".active-question").addClass("empty");
+                $(".selected-cell").addClass("empty");
                 modal.hideRiddle();
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
@@ -251,7 +253,7 @@ modal.setHandlers = function(){
 
                 var $score = $("#team"+iteam).find(".score")
                 var score = parseInt($score.text())
-                var val = parseInt($(".active-question").attr("data-points"));
+                var val = parseInt($(".selected-cell").attr("data-points"));
                 if(e.ctrlKey){
                     // if ctrl key is down, the team made a wrong guess, so give them
                     // minus points!
@@ -261,8 +263,8 @@ modal.setHandlers = function(){
 
 
                 }else{
-                    $(".active-question").addClass("solved-by-team-"+iteam);
-                    $(".active-question").addClass("empty");
+                    $(".selected-cell").addClass("solved-by-team-"+iteam);
+                    $(".selected-cell").addClass("empty");
                     $score.text(score + val);
                     var check_sign = "&#x2714;";
                     animateSymbol(check_sign, "team-"+iteam);
@@ -295,6 +297,10 @@ modal.setHandlers = function(){
                 e.preventDefault();
                 modal.showCategoryIntro();
 
+            }else if(e.keyCode == KEYCODE_SPACE){
+                e.preventDefault();
+                $('.selected-cell').click();
+
             }else if(e.keyCode == KEYCODE_o){
                 e.preventDefault();
                 modal.showOptions();
@@ -311,21 +317,21 @@ modal.setHandlers = function(){
                      || e.keyCode == KEYCODE_0){
                 e.preventDefault();
                 for(var iteam = 1; iteam <= 6; iteam++) {
-                    if($('.active-question').hasClass("solved-by-team-" + iteam)){
+                    if($('.selected-cell').hasClass("solved-by-team-" + iteam)){
                         var $score = $("#team"+iteam).find(".score");
                         var score = parseInt($score.text());
-                        var val = parseInt($(".active-question").attr("data-points"));
+                        var val = parseInt($(".selected-cell").attr("data-points"));
                         $score.text(score - val);
-                        $('.active-question').removeClass("solved-by-team-" + iteam);
+                        $('.selected-cell').removeClass("solved-by-team-" + iteam);
                     }
                 }
                 if((e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams)
-                   && $('.active-question').hasClass("empty")){
+                   && $('.selected-cell').hasClass("empty")){
                     var new_iteam = e.keyCode-KEYCODE_1+1;
-                    $('.active-question').addClass("solved-by-team-"+new_iteam);
+                    $('.selected-cell').addClass("solved-by-team-"+new_iteam);
                     var $score = $("#team"+new_iteam).find(".score");
                     var score = parseInt($score.text());
-                    var val = parseInt($(".active-question").attr("data-points"));
+                    var val = parseInt($(".selected-cell").attr("data-points"));
                     $score.text(score + val);
                 }
             }
@@ -359,14 +365,14 @@ $(document).ready(function(){
     $('body').on("click", ".plus", function(e){
         var $score = $(this).closest(".team").find(".score")
         var score = parseInt($score.text())
-        var val = parseInt($(".active-question").attr("data-points"));
+        var val = parseInt($(".selected-cell").attr("data-points"));
         $score.text(score + val);
     });
 
     $('body').on("click", ".minus", function(e){
         var $score = $(this).closest(".team").find(".score")
         var score = parseInt($score.text())
-        var val = parseInt($(".active-question").attr("data-points"));
+        var val = parseInt($(".selected-cell").attr("data-points"));
         $score.text(Math.max(0,score - val));
     });
 
