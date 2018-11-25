@@ -14,9 +14,8 @@ body {
   background-color:#2a3698;
   height:100%;
   font-family:Verdana, Arial, Helvetica, sans-serif;
-    overflow-y:hidden;
+  overflow-y:hidden;
 }
-
 
 .table-cell {
     width: calc(90% / var(--categories));
@@ -47,12 +46,6 @@ th#table-cell {
     color: #fff;
     border-radius:5px;
 }
-
-
-/* #question-row .table-cell:hover, #question-row .table-cell:focus, #question-row .table-cell.active { */
-/*     border-color:#666; */
-/*     border-style:solid; */
-/* } */
 
 
 #categories {
@@ -236,7 +229,6 @@ border:3px solid black;
 .hide {
     display:none;
 }
-
 
 #riddle-modal {
     transform-origin:top left;

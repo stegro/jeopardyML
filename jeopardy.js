@@ -119,13 +119,13 @@ modal.hideDailyDouble = function(){
     }else if(amount > max_points && amount > score){
         throw "Amount is too large."
     }
+    // write the amount into the cell attribute
     $('.selected-cell').attr("data-points", amount);
 
-
-        $('#gameplay').css("filter", "blur(0px)");
-        $('#daily-double-modal').hide()
-        $('.expanded').removeClass("expanded");
-        modal.setHandlers();
+    $('#gameplay').css("filter", "blur(0px)");
+    $('#daily-double-modal').hide()
+    $('.expanded').removeClass("expanded");
+    modal.setHandlers();
 }
 
 modal.showRiddle = function(cell){
@@ -137,7 +137,6 @@ modal.showRiddle = function(cell){
     if($(cell).hasClass("daily-double")) {
         modal.showDailyDouble(points);
     }else{
-
         icol_selector = $(cell).closest(".table-row").children().index(cell);
         irow_selector = $('#tableau #question-row').index($(cell).closest(".table-row"))
 
@@ -280,6 +279,7 @@ modal.setHandlers = function(){
     $(window).off("keydown.body");
     $(window).off("keydown.teams-modal");
     $(window).off("keydown.category-intro-modal");
+    $(window).off("keydown.daily-double-modal");
 
     if($('#teams-modal').hasClass("expanded")) {
         $(window).on("keydown.teams-modal", function(e){
@@ -334,9 +334,10 @@ modal.setHandlers = function(){
                 e.preventDefault();
                 var iteam = e.keyCode-KEYCODE_1+1;
 
-                var $score = $("#team"+iteam).find(".score")
+                var $score = $("#teams-modal #team"+iteam).find(".score")
                 var score = parseInt($score.text())
                 var val = parseInt($(".selected-cell").attr("data-points"));
+
                 if(e.ctrlKey){
                     // if ctrl key is down, the team made a wrong guess, so give them
                     // minus points!

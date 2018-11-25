@@ -114,7 +114,7 @@
 
         <div id="teams-modal" class="modal-wrapper">
 
-          <div class="team solved-by-team-1" id="team1" style="display:none">
+          <div class="team solved-by-team-1" id="team1">
             <h3 class="name" contenteditable="true">Team 1</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
@@ -123,7 +123,7 @@
             </div>
           </div>
 
-          <div class="team solved-by-team-2" id="team2" style="display:none">
+          <div class="team solved-by-team-2" id="team2">
             <h3 class="name" contenteditable="true">Team 2</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
@@ -132,7 +132,7 @@
             </div>
           </div>
 
-          <div class="team solved-by-team-3" id="team3" style="display:none">
+          <div class="team solved-by-team-3" id="team3">
             <h3 class="name" contenteditable="true">Team 3</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
@@ -141,7 +141,7 @@
             </div>
           </div>
 
-          <div class="team solved-by-team-4" id="team4" style="display:none">
+          <div class="team solved-by-team-4" id="team4">
             <h3 class="name" contenteditable="true">Team 4</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
@@ -150,7 +150,7 @@
             </div>
           </div>
 
-          <div class="team solved-by-team-5" id="team5" style="display:none">
+          <div class="team solved-by-team-5" id="team5">
             <h3 class="name" contenteditable="true">Team 5</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
@@ -159,7 +159,7 @@
             </div>
           </div>
 
-          <div class="team solved-by-team-6" id="team6" style="display:none">
+          <div class="team solved-by-team-6" id="team6">
             <h3 class="name" contenteditable="true">Team 6</h3>
             <h3 class="score" contenteditable="true">0</h3>
             <div class="score-control">
