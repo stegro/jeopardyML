@@ -289,7 +289,9 @@ border:3px solid black;
     /* display on top, regardless of source code order: */
     font-weight:bold;
     padding-right:10%;
-    display:block;
+    display:none;
+    /* uncomment this to display a title line: */
+    /* display:block; */
 }
 
 #riddle-title td:nth-child(1) {
@@ -343,11 +345,6 @@ border:3px solid black;
 
 kbd
 {
-
-    -moz-border-radius:3px;
-    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
-    -webkit-border-radius:3px;
-    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
     background-color:#f7f7f7;
     border:1px solid #ccc;
     border-radius:3px;
@@ -437,7 +434,7 @@ kbd
     animation-timing-function: ease-in;
 }
 #question-row .selected-cell {
-    border-color:#666;
+    border-color:#333;
     border-style:solid;
 }
 
