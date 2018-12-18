@@ -7,9 +7,7 @@
   <points>400</points>
   <points>500</points>
 
-  <category>
-    <title>Category 1</title>
-    <questions>
+  <category title="Category 1">
       <riddle>
         <clue>
           Clue 1 1
@@ -50,12 +48,9 @@
           Solution 1 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
-  <category>
-    <title>Category 2</title>
-    <questions>
+  <category title="Category 2">
       <riddle>
         <clue>
           Clue 2 1
@@ -96,13 +91,10 @@
           Solution 2 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
 
-  <category>
-    <title>Category 3</title>
-    <questions>
+  <category title="Category 3">
       <riddle>
         <clue>
           Clue 3 1
@@ -143,12 +135,9 @@
           Solution 3 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
-  <category>
-    <title>Category 4</title>
-    <questions>
+  <category title="Category 4">
       <riddle>
         <clue>
           Clue 4 1
@@ -189,13 +178,10 @@
           Solution 4 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
 
-  <category>
-    <title>Category 5</title>
-    <questions>
+  <category title="Category 5">
       <riddle>
         <clue>
           Clue 5 1
@@ -236,12 +222,9 @@
           Solution 5 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
-  <category>
-    <title>Category 6</title>
-    <questions>
+  <category title="Category 6">
       <riddle>
         <clue>
           Clue 6 1
@@ -282,7 +265,6 @@
           Solution 6 5
         </solution>
       </riddle>
-    </questions>
   </category>
 
 </jeopardy>

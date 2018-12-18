@@ -52,7 +52,7 @@
                   <tr class="table-row" id="categories">
                     <xsl:for-each select="/jeopardy/category">
                       <th class="table-cell">
-                        <xsl:value-of select="title" />
+                        <xsl:value-of select="@title" />
                       </th>
                     </xsl:for-each>
                   </tr>
@@ -83,12 +83,10 @@
 
                     <div class="points"><xsl:copy-of select="$points" /></div>
                     <div class="clue">
-                      <!-- <xsl:value-of select="questions/riddle[0 + $ipoints]/clue" /> -->
-                      <xsl:copy-of select="questions/riddle[0 + $ipoints]/clue/node()"/>
+                      <xsl:copy-of select="riddle[0 + $ipoints]/clue/node()"/>
                     </div>
                     <div class="solution">
-                      <!-- <xsl:value-of select="questions/riddle[0 + $ipoints]/solution" /> -->
-                      <xsl:copy-of select="questions/riddle[0 + $ipoints]/solution/node()"/>
+                      <xsl:copy-of select="riddle[0 + $ipoints]/solution/node()"/>
                     </div>
                   </td>
                 </xsl:for-each>
