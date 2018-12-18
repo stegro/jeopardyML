@@ -33,11 +33,12 @@ and displaying questions, and managing scores.
   * all categories must have same number of questions (i.e. no empty cells in the
     first hand)
   * controls are supposed to be done with keyboard as much as possible, to avoid
-    the mouse pointer on the screen.
+    the mouse pointer on the screen. You may want to map an infrared remote
+    handle to keyboard keys.
   * you may put arbitrary XHTML content into the clues and solutions
-  * if there is a file 'think_theme.mp3' in the folder then this audio will be played during 
+  * if there is a file 'think_theme.mp3' in the folder then this audio will be played during
     category intro and at the scores screen. Due to filesize and legal reasons, such an
-    audio file is not included in this repository, but you can find it elsewhere 
+    audio file is not included in this repository, but you can find it elsewhere
     on the web (search for 'jeopardy think theme').
 
 ### Controls:
@@ -77,6 +78,9 @@ And this is what this game is all about:
     - *[Space]* to reveal the solution
     - *[1]*, *[2]* or any other numeric key to give team 1/2/... the points and return
     - *[Ctrl]+[1]* to substract points from team 1 (and analogously for the other teams)
+    - Pressing first *[n]* and then a number (within 3 seconds) will also yield negative points for
+      the respective team. This may be useful if the showmaster is using an
+      infrared (IR) remote which is mapped to keyboard keys.
     - *[0]* to return after having revealed the solution, if nobody has solved
 
 

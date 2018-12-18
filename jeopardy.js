@@ -13,6 +13,7 @@ var KEYCODE_i = 73
 var KEYCODE_o = 79
 var KEYCODE_s = 83
 var KEYCODE_w = 87
+var KEYCODE_n = 78
 var KEYCODE_0 = 48
 
 var KEYCODE_left = 37
@@ -22,6 +23,8 @@ var KEYCODE_down = 40
 
 var nteams;
 var iteam = 1;
+
+var negative_points_flag = false;
 
 var modal = function(){}
 
@@ -362,6 +365,13 @@ modal.setHandlers = function(){
                 e.preventDefault();
                 $(".selected-cell").addClass("empty");
                 modal.hideRiddle();
+            }else if(e.keyCode == KEYCODE_n){
+                negative_points_flag = true;
+                // deactivate it after a couple of seconds
+                setTimeout(function(){
+                    negative_points_flag = false;
+                },3000);
+                    
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
                 var iteam = e.keyCode-KEYCODE_1+1;
@@ -370,14 +380,14 @@ modal.setHandlers = function(){
                 var score = parseInt($score.text())
                 var val = parseInt($(".selected-cell").attr("data-points"));
 
-                if(e.ctrlKey){
+                if(e.ctrlKey || negative_points_flag){
                     // if ctrl key is down, the team made a wrong guess, so give them
                     // minus points!
                     $score.text(Math.max(0,score - val));
                     var x_sign = "&#x2716;";
                     animateSymbol(x_sign, "team-"+iteam);
 
-
+                    negative_points_flag = false;
                 }else{
                     $(".selected-cell").addClass("solved-by-team-"+iteam);
                     $(".selected-cell").addClass("empty");
