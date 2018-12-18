@@ -25,6 +25,7 @@ var iteam = 1;
 
 var modal = function(){}
 
+
 function init(){
     setTeams();
     modal.showCategoryIntro();
@@ -73,6 +74,33 @@ function moveSelector(keycode){
     }
     $('.selected-cell').removeClass('selected-cell')
     $($($('#tableau #question-row').get(irow_selector)).children().get(icol_selector)).addClass('selected-cell')
+}
+
+function startThemeMusic(){
+    try{
+        let audio = document.getElementById("audio-themes");
+        audio.loop = true;
+        audio.volume = 0;
+        audio.play();
+        $('#audio-themes').animate({volume: 1.0}, 3*1000);
+    }catch(err){
+        console.log(err);
+        console.log(err.message);
+    }
+}
+
+function stopThemeMusic(){
+    try{
+        let audio = document.getElementById("audio-themes");
+        fade_millisec = 8*1000;
+        $('#audio-themes').animate({volume: 0.0}, fade_millisec);
+        setTimeout(function(){
+            document.getElementById("audio-themes").pause();
+        }, fade_millisec);
+    }catch(err){
+        console.log(err);
+        console.log(err.message);
+    }
 }
 
 modal.revealSolution = function(){
@@ -195,6 +223,7 @@ modal.hideRiddle = function(){
 }
 
 modal.showScores = function(){
+    startThemeMusic();
     $('#gameplay').css("filter", "blur(5px)");
     $('#teams-modal').css({
         "display": "flex"
@@ -211,6 +240,7 @@ modal.hideScores = function(){
     $('#teams-modal').hide()
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
+    stopThemeMusic();
 }
 
 modal.showOptions = function(){
@@ -230,6 +260,7 @@ modal.hideOptions = function(){
 }
 
 modal.showCategoryIntro = function(){
+    startThemeMusic();
     $('#gameplay').css("filter", "blur(20px)");
     $('#category-intro-modal').css({
         "display": "flex"
@@ -272,6 +303,7 @@ modal.hideCategoryIntro = function(){
     $('#category-intro-modal').hide()
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
+    stopThemeMusic();
 }
 
 modal.setHandlers = function(){

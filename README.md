@@ -35,6 +35,10 @@ and displaying questions, and managing scores.
   * controls are supposed to be done with keyboard as much as possible, to avoid
     the mouse pointer on the screen.
   * you may put arbitrary XHTML content into the clues and solutions
+  * if there is a file 'think_theme.mp3' in the folder then this audio will be played during 
+    category intro and at the scores screen. Due to filesize and legal reasons, such an
+    audio file is not included in this repository, but you can find it elsewhere 
+    on the web (search for 'jeopardy think theme').
 
 ### Controls:
 
@@ -79,7 +83,6 @@ And this is what this game is all about:
 ### ToDo:
 
  * display images automatically as large as possible
- * play jeopardy sound themes if files exist
  * arrange score boxes in a grid
  * proper localisation
  * a neat (animated?) screen to celebrate the winner
