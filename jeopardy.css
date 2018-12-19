@@ -433,6 +433,7 @@ kbd
     animation-duration: 1.5s;
     animation-timing-function: ease-in;
 }
+
 #question-row .selected-cell {
     border-color:#333;
     border-style:solid;
@@ -443,3 +444,72 @@ kbd
 /*     border-color:#00ffff; */
 /*     border-style:dotted; */
 /* } */
+
+#winner-modal {
+    background-color:rgba(0,0,0,.8);
+    /* display:flex; */
+    margin: 0px;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    --podium_height: 200px;
+    --podium_width: 70%;
+    --podium_orig_height: 300px;
+    --podium_yratio: calc(var(--podium_height) / var(--podium_orig_height));
+}
+
+#confetti{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+#podium {
+    height:var(--podium_height);
+    width:var(--podium_width);
+    position:absolute;
+    bottom:0;
+}
+
+#winner-team-rank1 {
+    position: absolute;
+    bottom: calc(var(--podium_height) / 3 * 3 );
+    left: calc((100% - var(--podium_width)) / 2 + (2 - 1) * var(--podium_width) / 3);
+    width: calc(var(--podium_width) / 3);
+    text-align: center;
+}
+#winner-team-rank2 {
+    position: absolute;
+    bottom: calc(var(--podium_height) / 3 * 2 );
+    left: calc((100% - var(--podium_width)) / 2 + (1 - 1) * var(--podium_width) / 3);
+    width: calc(var(--podium_width) / 3);
+    text-align: center;
+
+}
+#winner-team-rank3 {
+    position: absolute;
+    bottom: calc(var(--podium_height) / 3 * 1 );
+    left: calc((100% - var(--podium_width)) / 2 + (3 - 1) * var(--podium_width) / 3);
+    width: calc(var(--podium_width) / 3);
+    text-align: center;
+}
+#podium-platform {
+    fill:darkgray;
+    stroke-width:0;
+}
+#podium-front {
+    fill:gray;
+    stroke-width:0;
+}
+#podium-text {
+    fill:black;
+    font-size:60px;
+    font-family:Serif;
+    text-anchor: middle;
+    /*dominant-baseline: hanging;*/
+}
+

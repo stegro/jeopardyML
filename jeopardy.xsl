@@ -35,14 +35,15 @@
         <link rel="stylesheet" href="jeopardy.css"/>
         <script src="jquery.min.js"></script>
         <script src="jeopardy.js" ></script>
-        <script type="text/javascript" src="celebrate.js"></script>
+        <script type="text/javascript" src="confetti.js"></script>
 
       </head>
       <body onload="init();">
         <audio id="audio-themes">
           <source src='think_theme.mp3' type="audio/mpeg" />
         </audio>
-        
+
+
         <div id="gameplay">
           <table id="tableau">
             <tr class="table-row" >
@@ -191,6 +192,19 @@
 
         <div id="category-intro-modal" class="modal-wrapper">
 
+        </div>
+
+        <div id="winner-modal" class="modal-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none meet" viewBox="0 -30 300 300" id="podium">
+            <polygon points="0,300 300,300 300,200 200,200 200,0 100,0 100,100 0,100" id="podium-front" />
+            <polygon points="0,100 100,100 100,70 30,70" id="podium-platform" />
+            <polygon points="100,0 200,0 175,-30 125,-30" id="podium-platform" />
+            <polygon points="300,200 200,200 200,170 270,170" id="podium-platform" />
+          </svg>
+          <div id="winner-team-rank1"><h1 style="color:white;">Rank1</h1></div>
+          <div id="winner-team-rank2"><h1 style="color:white;">Rank2</h1></div>
+          <div id="winner-team-rank3"><h1 style="color:white;">Rank3</h1></div>
+          <canvas id="confetti" width="1" height="1"></canvas>
         </div>
 
         <div id="options-modal" class="modal-wrapper">

@@ -50,6 +50,7 @@ and displaying questions, and managing scores.
     - *[i]* to show category intro again
     - *[s]* to show scores
     - *[o]* to show options
+    - *[w]* to show winner screen (preferably at end of the game)
     - click on a cell to select it and enter it if possible
     - *[Space]* is like clicking on the selected cell
     - *[1]*, *[2]* or any other numeric key to change the team which has
@@ -64,6 +65,8 @@ and displaying questions, and managing scores.
        the selected cell
  * At the options screen:
     - change number of teams and hit the button to leave
+ * At the winner screen:
+    - *[ESC]* to leave it
  * At the Daily Double screen:
     - *[up]*,*[down]* to change the teams score that is displayed
     - enter the amount via keyboard. If it is <5 or larger than the maximum points
@@ -83,12 +86,16 @@ And this is what this game is all about:
       infrared (IR) remote which is mapped to keyboard keys.
     - *[0]* to return after having revealed the solution, if nobody has solved
 
+### Acknowledgements
+
+ * The beautiful confetti animation was written by Hemn Chawroka,
+   thank you so much!
 
 ### ToDo:
 
  * display images automatically as large as possible
  * arrange score boxes in a grid
  * proper localisation
- * a neat (animated?) screen to celebrate the winner
  * double jeopardy, final jeopardy
  * test with other browsers
+ * deal with several teams having the same score on the winner screen

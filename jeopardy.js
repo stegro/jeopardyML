@@ -246,6 +246,52 @@ modal.hideScores = function(){
     stopThemeMusic();
 }
 
+modal.showWinner = function(){
+    $('#gameplay').css("filter", "blur(10px)");
+    $('#winner-modal').css({
+        "display": "flex"
+    });
+    $('.expanded').removeClass("expanded");
+    $('#winner-modal').addClass("expanded");
+
+    var iteams = [];
+    for(var i = 1; i <= nteams; i++){
+        iteams[iteams.length] = i;
+    }
+    iteams.sort(function(a, b){
+        var $score = $("#teams-modal #team"+a).find(".score")
+        var ascore = parseInt($score.text())
+        $score = $("#teams-modal #team"+b).find(".score")
+        var bscore = parseInt($score.text())
+        return bscore - ascore;
+    });
+
+
+    $('#winner-team-rank1').html(
+        $("#team"+iteams[0]).prop("outerHTML")
+    );
+    $('#winner-team-rank2').html(
+        $("#team"+iteams[1]).prop("outerHTML")
+    );
+    $('#winner-team-rank3').html(
+        $("#team"+iteams[2]).prop("outerHTML")
+    );
+
+    $('#winner-modal .score-control').hide()
+
+
+    modal.setHandlers();
+    startConfetti();
+}
+
+modal.hideWinner = function(){
+    $('#gameplay').css("filter", "blur(0px)");
+    $('#winner-modal').hide()
+    $('.expanded').removeClass("expanded");
+    modal.setHandlers();
+    confetti.stop();
+}
+
 modal.showOptions = function(){
     $('#gameplay').css("filter", "blur(5px)");
     $('#options-modal').css({
@@ -315,6 +361,7 @@ modal.setHandlers = function(){
     $(window).off("keydown.teams-modal");
     $(window).off("keydown.category-intro-modal");
     $(window).off("keydown.daily-double-modal");
+    $(window).off("keydown.winner-modal");
 
     if($('#teams-modal').hasClass("expanded")) {
         $(window).on("keydown.teams-modal", function(e){
@@ -350,7 +397,14 @@ modal.setHandlers = function(){
                 $('#daily-double-team').html(
                     $("#team"+iteam).prop("outerHTML")
                 );
-                $('#daily-double-team .score-control').hide()
+                $('#daily-double-team .score-control').hide();
+            }
+        });
+    }else if($('#winner-modal').hasClass("expanded")) {
+        $(window).on("keydown.winner-modal", function(e){
+            if(e.keyCode == KEYCODE_ESC){
+                e.preventDefault();
+                modal.hideWinner();
             }
         });
     }else if($('#riddle-modal').hasClass("expanded")) {
@@ -371,7 +425,7 @@ modal.setHandlers = function(){
                 setTimeout(function(){
                     negative_points_flag = false;
                 },3000);
-                    
+
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
                 var iteam = e.keyCode-KEYCODE_1+1;
@@ -434,6 +488,10 @@ modal.setHandlers = function(){
             }else if(e.keyCode == KEYCODE_s){
                 e.preventDefault();
                 modal.showScores();
+
+            }else if(e.keyCode == KEYCODE_w){
+                e.preventDefault();
+                modal.showWinner();
 
             }else if(e.keyCode >= KEYCODE_left && e.keyCode <= KEYCODE_down){
                 e.preventDefault();
