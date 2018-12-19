@@ -33,7 +33,6 @@
         </script>
 
         <link rel="stylesheet" href="jeopardy.css"/>
-        <link rel="stylesheet" type="text/css" href="celebrate.css" />
         <script src="jquery.min.js"></script>
         <script src="jeopardy.js" ></script>
         <script type="text/javascript" src="celebrate.js"></script>

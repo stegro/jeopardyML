@@ -328,9 +328,9 @@ modal.setHandlers = function(){
             if(e.keyCode == KEYCODE_SPACE){
                 e.preventDefault();
                 try{
-                    modal.hideDailyDouble()
+                    modal.hideDailyDouble();
                     $(".selected-cell").removeClass("daily-double");
-                    $(".selected-cell").click()
+                    $(".selected-cell").click();
                 }catch(err){
                     console.log(err);
                     console.log(err.message);
@@ -342,7 +342,7 @@ modal.setHandlers = function(){
                 $('#daily-double-team').html(
                     $("#team"+iteam).prop("outerHTML")
                 );
-                $('#daily-double-team .score-control').hide()
+                $('#daily-double-team .score-control').hide();
             }else if(e.keyCode == KEYCODE_down){
                 e.preventDefault();
                 // iteam is 1-based, so cycling with modulo goes like this:
@@ -469,7 +469,7 @@ modal.setHandlers = function(){
 $(document).ready(function(){
     $('#riddle-modal').on("click", '#solution-button', function(){
         modal.revealSolution();
-    })
+    });
 
     $('#riddle-modal').on("click", '#continue-button', function(){
         modal.hideRiddle();
