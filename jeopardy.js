@@ -25,6 +25,7 @@ var nteams;
 var iteam = 1;
 
 var negative_points_flag = false;
+var answer_allow_only_iteam = 0;
 
 var modal = function(){}
 
@@ -375,6 +376,7 @@ modal.setHandlers = function(){
             if(e.keyCode == KEYCODE_SPACE){
                 e.preventDefault();
                 try{
+                    answer_allow_only_iteam = iteam;
                     modal.hideDailyDouble();
                     $(".selected-cell").removeClass("daily-double");
                     $(".selected-cell").click();
@@ -429,6 +431,10 @@ modal.setHandlers = function(){
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
                 var iteam = e.keyCode-KEYCODE_1+1;
+
+                // make sure only the player who is allowed to answers the daily double
+                if(answer_allow_only_iteam > 0 && iteam != answer_allow_only_iteam)
+                    return
 
                 var $score = $("#teams-modal #team"+iteam).find(".score")
                 var score = parseInt($score.text())

@@ -26,10 +26,9 @@ and displaying questions, and managing scores.
   * this is made for big screens, not for mobile phones.
   * points values, number of categories and number of questions are arbitrary and
     are all defined in the xml file
-  * a random cell will be made a "Daily Double". Only the player who chose the cell
-    is allowed to answer, but this rule must be enforced by the show host, of course.
-    After placing bet, the mechanics of solving the riddle is identical to the
-    other cells.
+  * a random cell will be made a "Daily Double". After placing bet, the mechanics
+    of solving the riddle is identical to the other cells, except that only the player who chose the cell
+    is allowed to answer. 
   * all categories must have same number of questions (i.e. no empty cells in the
     first hand)
   * controls are supposed to be done with keyboard as much as possible, to avoid
