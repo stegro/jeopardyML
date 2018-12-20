@@ -66,11 +66,11 @@ function startConfetti(){
 
     var speed = 50,
         duration = (1.0 / speed),
-        confettiRibbonCount = 11,
+        confettiRibbonCountMax = 11,
         ribbonPaperCount = 30,
         ribbonPaperDist = 8.0,
         ribbonPaperThick = 8.0,
-        confettiPaperCount = 95,
+        confettiPaperCountMax = 95,
         DEG_TO_RAD = PI / 180,
         RAD_TO_DEG = 180 / PI,
         colors = [
@@ -366,14 +366,14 @@ function startConfetti(){
         var interval = null;
         var confettiRibbons = new Array();
         ConfettiRibbon.bounds = new Vector2(canvasWidth, canvasHeight);
-        for (i = 0; i < confettiRibbonCount; i++) {
-            confettiRibbons[i] = new ConfettiRibbon(random() * canvasWidth, -random() * canvasHeight * 2, ribbonPaperCount, ribbonPaperDist, ribbonPaperThick, 45, 1, 0.05);
-        }
+        // for (i = 0; i < confettiRibbonCountMax; i++) {
+        //     confettiRibbons[i] = new ConfettiRibbon(random() * canvasWidth, -random() * canvasHeight * 2, ribbonPaperCount, ribbonPaperDist, ribbonPaperThick, 45, 1, 0.05);
+        // }
         var confettiPapers = new Array();
         ConfettiPaper.bounds = new Vector2(canvasWidth, canvasHeight);
-        for (i = 0; i < confettiPaperCount; i++) {
-            confettiPapers[i] = new ConfettiPaper(random() * canvasWidth, random() * canvasHeight);
-        }
+        // for (i = 0; i < confettiPaperCountMax; i++) {
+        //     confettiPapers[i] = new ConfettiPaper(random() * canvasWidth, random() * canvasHeight);
+        // }
         this.resize = function() {
             canvasWidth = canvasParent.offsetWidth;
             canvasHeight = canvasParent.offsetHeight;
@@ -393,11 +393,21 @@ function startConfetti(){
         this.update = function() {
             var i = 0;
             context.clearRect(0, 0, canvas.width, canvas.height);
-            for (i = 0; i < confettiPaperCount; i++) {
+
+            if(confettiPapers.length < confettiPaperCountMax && random() < 0.07) {
+                confettiPapers[confettiPapers.length] = new ConfettiPaper(random() * canvasWidth, canvasHeight);
+            }
+            if(confettiRibbons.length < confettiRibbonCountMax && random() < 0.04) {
+                confettiRibbons[confettiRibbons.length] = new ConfettiRibbon(random() * canvasWidth,
+                                                                             -random() * canvasHeight * 2,
+                                                                             ribbonPaperCount, ribbonPaperDist, ribbonPaperThick, 45, 1, 0.05);
+            }
+
+            for (i = 0; i < confettiPapers.length; i++) {
                 confettiPapers[i].Update(duration);
                 confettiPapers[i].Draw(context);
             }
-            for (i = 0; i < confettiRibbonCount; i++) {
+            for (i = 0; i < confettiRibbons.length; i++) {
                 confettiRibbons[i].Update(duration);
                 confettiRibbons[i].Draw(context);
             }

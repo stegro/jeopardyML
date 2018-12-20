@@ -86,7 +86,9 @@ function moveSelector(keycode){
 function startThemeMusic(filename){
     try{
         let audio = document.getElementById("audio-themes");
+        console.log("starting audio:" + filename);
         audio.src = filename;
+        audio.load();
         audio.loop = true;
         audio.volume = 0;
         audio.play();
@@ -252,7 +254,7 @@ modal.hideScores = function(){
     $('#gameplay').css({"filter": "blur(0px)",
                         'transition':'all 2s ease-out'
                        });
-    
+
     $('#teams-modal').hide()
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
@@ -283,6 +285,10 @@ modal.showWinner = function(){
         return bscore - ascore;
     });
 
+    $('#winner-team-rank1').removeClass("winner-team-rank1-in-animation");
+    $('#winner-team-rank2').removeClass("winner-team-rank2-in-animation");
+    $('#winner-team-rank3').removeClass("winner-team-rank3-in-animation");
+    $('#podium').removeClass("podium-in-animation");
 
     $('#winner-team-rank1').html(
         $("#team"+iteams[0]).prop("outerHTML")
@@ -293,12 +299,28 @@ modal.showWinner = function(){
     $('#winner-team-rank3').html(
         $("#team"+iteams[2]).prop("outerHTML")
     );
-
     $('#winner-modal .score-control').hide()
 
+    $('#podium').addClass("podium-in-animation");
+    setTimeout(function(){
+        startConfetti();
+
+        $('#winner-team-rank3').addClass("winner-team-rank3-in-animation");
+        setTimeout(function(){
+            $('#winner-team-rank2').addClass("winner-team-rank2-in-animation");
+            setTimeout(function(){
+                $('#winner-team-rank1').addClass("winner-team-rank1-in-animation");
+            },
+                   // the timeout should match the animation length
+                       8000);
+        },
+                   // the timeout should match the animation length
+                   8000);
+    },
+               // the timeout should match the animation length
+               8000);
 
     modal.setHandlers();
-    startConfetti();
 }
 
 modal.hideWinner = function(){

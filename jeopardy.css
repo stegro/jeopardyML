@@ -455,7 +455,8 @@ kbd
     left: 0;
     top: 0;
     justify-content: center;
-    --podium_height: 200px;
+    --podium_height: 300px;
+    --podium_ydelta: 15px;
     --podium_width: 70%;
     --podium_orig_height: 300px;
     --podium_yratio: calc(var(--podium_height) / var(--podium_orig_height));
@@ -472,19 +473,21 @@ kbd
     height:var(--podium_height);
     width:var(--podium_width);
     position:absolute;
-    bottom:0;
+    bottom:100%;
 }
 
 #winner-team-rank1 {
     position: absolute;
-    bottom: calc(var(--podium_height) / 3 * 3 );
+    bottom: -100%;
+    /* bottom: calc(var(--podium_height) / 3 * 3 ); */
     left: calc((100% - var(--podium_width)) / 2 + (2 - 1) * var(--podium_width) / 3);
     width: calc(var(--podium_width) / 3);
     text-align: center;
 }
 #winner-team-rank2 {
     position: absolute;
-    bottom: calc(var(--podium_height) / 3 * 2 );
+    bottom: -100%;
+    /* bottom: calc(var(--podium_height) / 3 * 2 ); */
     left: calc((100% - var(--podium_width)) / 2 + (1 - 1) * var(--podium_width) / 3);
     width: calc(var(--podium_width) / 3);
     text-align: center;
@@ -492,11 +495,58 @@ kbd
 }
 #winner-team-rank3 {
     position: absolute;
-    bottom: calc(var(--podium_height) / 3 * 1 );
+    bottom: -100%;
+    /* bottom: calc(var(--podium_height) / 3 * 1 ); */
     left: calc((100% - var(--podium_width)) / 2 + (3 - 1) * var(--podium_width) / 3);
     width: calc(var(--podium_width) / 3);
     text-align: center;
 }
+
+@keyframes winner-team-rank1-in-animation {
+    0% {
+        bottom: -100%;
+       }
+    100% {
+        bottom: calc(var(--podium_height) / 3 * 3 - var(--podium_ydelta) );
+        }
+}
+.winner-team-rank1-in-animation {
+    animation-name: winner-team-rank1-in-animation;
+    animation-duration: 5.0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes winner-team-rank2-in-animation {
+    0% {
+        bottom: -100%;
+       }
+    100% {
+        bottom: calc(var(--podium_height) / 3 * 2 - var(--podium_ydelta) );
+        }
+}
+.winner-team-rank2-in-animation {
+    animation-name: winner-team-rank2-in-animation;
+    animation-duration: 5.0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes winner-team-rank3-in-animation {
+    0% {
+        bottom: -100%;
+       }
+    100% {
+        bottom: calc(var(--podium_height) / 3 * 1 - var(--podium_ydelta) );
+        }
+}
+.winner-team-rank3-in-animation {
+    animation-name: winner-team-rank3-in-animation;
+    animation-duration: 5.0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
 #podium-platform {
     fill:darkgray;
     stroke-width:0;
@@ -513,3 +563,17 @@ kbd
     /*dominant-baseline: hanging;*/
 }
 
+@keyframes podium-in-animation {
+    0% {
+        bottom: 100%;
+       }
+    100% {
+        bottom: 0px;
+        }
+}
+.podium-in-animation {
+    animation-name: podium-in-animation;
+    animation-duration: 5.0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
