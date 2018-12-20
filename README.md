@@ -70,6 +70,9 @@ and displaying questions, and managing scores.
     - change number of teams and hit the button to leave
  * At the winner screen:
     - *[ESC]* to leave it
+    - *[SPACE]* to leave it and go back one page in history, i.e. to the page visited 
+      before this xml file. You may want to enlist links to all the rounds you created
+      in jeopardy.html, for example, and go back to that page this way.
  * At the Daily Double screen:
     - *[up]*,*[down]* to change the teams score that is displayed
     - enter the amount via keyboard. If it is <5 or larger than the maximum points
@@ -89,7 +92,7 @@ And this is what this game is all about:
       infrared (IR) remote which is mapped to keyboard keys.
     - *[0]* to return after having revealed the solution, if nobody has solved
 
-### Acknowledgements
+### Acknowledgements:
 
  * The beautiful confetti animation was written by Hemn Chawroka,
    thank you so much!

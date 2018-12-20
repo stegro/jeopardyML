@@ -90,7 +90,7 @@ function startThemeMusic(filename){
         audio.src = filename;
         audio.load();
         audio.loop = true;
-        audio.volume = 0;
+        audio.volume = 0.0;
         audio.play();
         $('#audio-themes').animate({volume: 1.0}, 3*1000);
 
@@ -446,8 +446,14 @@ modal.setHandlers = function(){
     }else if($('#winner-modal').hasClass("expanded")) {
         $(window).on("keydown.winner-modal", function(e){
             if(e.keyCode == KEYCODE_ESC){
-                e.preventDefault();
                 modal.hideWinner();
+            } else if(e.keyCode == KEYCODE_SPACE){
+                e.preventDefault();
+                fade_millisec = 3000;
+                $('#audio-themes').animate({volume: 0.0}, fade_millisec);
+                setTimeout(function(){
+                    window.history.go(-1);
+                }, fade_millisec);
             }
         });
     }else if($('#riddle-modal').hasClass("expanded")) {
