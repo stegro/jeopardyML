@@ -39,8 +39,7 @@
 
       </head>
       <body onload="init();">
-        <audio id="audio-themes">
-          <source src='think_theme.mp3' type="audio/mpeg" />
+        <audio id="audio-themes" type="audio/mpeg" >
         </audio>
 
 

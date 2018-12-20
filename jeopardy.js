@@ -3,6 +3,9 @@ var icategory = -1;
 var categories = $('#categories .table-cell').length;
 var grades = $('#tableau #question-row').length;
 
+var AUDIO_THINK_THEME = 'think_theme.mp3';
+var AUDIO_THINK_THEME_REMIX = 'think_theme_remix.mp3';
+
 var irow_selector = 0;
 var icol_selector = 0;
 
@@ -80,16 +83,20 @@ function moveSelector(keycode){
     $($($('#tableau #question-row').get(irow_selector)).children().get(icol_selector)).addClass('selected-cell')
 }
 
-function startThemeMusic(){
+function startThemeMusic(filename){
     try{
         let audio = document.getElementById("audio-themes");
+        audio.src = filename;
         audio.loop = true;
         audio.volume = 0;
         audio.play();
         $('#audio-themes').animate({volume: 1.0}, 3*1000);
+
+        return true
     }catch(err){
         console.log(err);
         console.log(err.message);
+        return false
     }
 }
 
@@ -227,7 +234,7 @@ modal.hideRiddle = function(){
 }
 
 modal.showScores = function(){
-    startThemeMusic();
+    startThemeMusic(AUDIO_THINK_THEME);
     $('#gameplay').css("filter", "blur(5px)");
     $('#teams-modal').css({
         "display": "flex"
@@ -248,6 +255,10 @@ modal.hideScores = function(){
 }
 
 modal.showWinner = function(){
+    // if there is a remix, use that, otherwise try the default audio theme
+    if(!startThemeMusic(AUDIO_THINK_THEME_REMIX))
+        startThemeMusic(AUDIO_THINK_THEME);
+
     $('#gameplay').css("filter", "blur(10px)");
     $('#winner-modal').css({
         "display": "flex"
@@ -291,6 +302,7 @@ modal.hideWinner = function(){
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
     confetti.stop();
+    stopThemeMusic();
 }
 
 modal.showOptions = function(){
@@ -310,7 +322,7 @@ modal.hideOptions = function(){
 }
 
 modal.showCategoryIntro = function(){
-    startThemeMusic();
+    startThemeMusic(AUDIO_THINK_THEME);
     $('#gameplay').css("filter", "blur(20px)");
     $('#category-intro-modal').css({
         "display": "flex"

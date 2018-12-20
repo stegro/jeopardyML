@@ -18,7 +18,9 @@ and displaying questions, and managing scores.
 
  1. You copy jeopardy.xml into a new file, say myjeopardy.xml
  2. Edit myjeopardy.xml with a texteditor and fill it with your own content.
- 3. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
+ 3. (optional) download music theme mp3 files from somewhere and put them into the same
+    folder, see the *Notes* section
+ 4. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
     All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 
 ### Notes:
@@ -36,9 +38,11 @@ and displaying questions, and managing scores.
     handle to keyboard keys.
   * you may put arbitrary XHTML content into the clues and solutions
   * if there is a file 'think_theme.mp3' in the folder then this audio will be played during
-    category intro and at the scores screen. Due to filesize and legal reasons, such an
-    audio file is not included in this repository, but you can find it elsewhere
-    on the web (search for 'jeopardy think theme').
+    category intro and at the scores screen. Due to filesize and legal reasons, audio files are
+    not included in this repository, but you can find some elsewhere
+    on the web (search for 'jeopardy think theme' or remixes on e.g. soundcloud).
+  * if there is a file 'think_theme_remix.mp3' in the folder then this audio will be played during
+    winner screen. Otherwise 'think_theme.mp3' will be tried.
 
 ### Controls:
 
