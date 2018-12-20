@@ -235,9 +235,11 @@ modal.hideRiddle = function(){
 
 modal.showScores = function(){
     startThemeMusic(AUDIO_THINK_THEME);
-    $('#gameplay').css("filter", "blur(5px)");
+    $('#gameplay').css({"filter": "blur(5px)",
+                        'transition':'all 2s ease-in'
+                       });
     $('#teams-modal').css({
-        "display": "flex"
+        "display": "flex",
     });
     $('.expanded').removeClass("expanded");
     $('#teams-modal').addClass("expanded");
@@ -247,7 +249,10 @@ modal.showScores = function(){
 }
 
 modal.hideScores = function(){
-    $('#gameplay').css("filter", "blur(0px)");
+    $('#gameplay').css({"filter": "blur(0px)",
+                        'transition':'all 2s ease-out'
+                       });
+    
     $('#teams-modal').hide()
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
@@ -361,7 +366,9 @@ modal.nextCategoryIntro = function(){
     }
 }
 modal.hideCategoryIntro = function(){
-    $('#gameplay').css("filter", "blur(0px)");
+    $('#gameplay').css({"filter": "blur(0px)",
+                       'transition':'all 3s ease-out'
+                       });
     $('#category-intro-modal').hide()
     $('.expanded').removeClass("expanded");
     modal.setHandlers();
