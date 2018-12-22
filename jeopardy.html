@@ -6,32 +6,43 @@
 
     <style>
       body {
-      background-image: url("logo/jeopardy.jpg");
-      background-size: contain;
+      background-image: url("logo/jeopardy_gold.png");
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: center -150px;
+      background-position: center top -70px;
       }
 
-      .roundsbox {
+      .box {
       position: absolute;
-      bottom: 0;
-      color: white;
+      bottom: 5px;
       }
 
       a {
-      color: white;
+      background-color:#bbb;
+      border:2px solid #ccc;
+      border-radius:4px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+      color:#333;
+      display:inline-block;
+      font-family:Arial,Helvetica,sans-serif;
+      font-family: monospace, monospace;
+      font-size:30px;
+      line-height:1.4;
+      margin: 5px .1em;
+      padding: 5px 5px 5px 5px;
+      text-shadow:0 1px 0 #fff;
       }
-      </style>
+
+    </style>
   </head>
 
   <body>
-    <div class="roundsbox">
-      <ul>
-        <li><a href="jeopardy.xml">Runde 1</a></li>
-      </ul>
+    <div class="box">
+      <a href="jeopardy.xml">Runde 1</a>
+      <a href="jeopardy2.xml">Runde 2</a>
+      <a href="jeopardy3.xml">Runde 3</a>
+      <a href="jeopardy4.xml">Runde 4</a>
+      <a href="jeopardy5.xml">Runde 5</a>
     </div>
-
   </body>
-
 </html>
