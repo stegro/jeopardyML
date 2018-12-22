@@ -211,7 +211,7 @@ html, body {
 }
 
 #question-row {
-border:3px solid black;
+    border:3px solid black;
 }
 
 
@@ -233,6 +233,8 @@ border:3px solid black;
 .riddle-inner {
     font-size: 80px;
     padding: 0px;
+    color: white;
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 .solution, .clue {
     display:none;
@@ -241,8 +243,6 @@ border:3px solid black;
     justify-content: center;
     align-items:center;
     flex-wrap: wrap;
-    color: white;
-    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 .solution  {
     z-index: 200;
@@ -263,8 +263,6 @@ border:3px solid black;
 }
 
 .riddle-inner span, .solution span {
-    color: white;
-    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
     position: absolute;
     z-index: 150;
     bottom: 0px;
