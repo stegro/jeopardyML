@@ -183,7 +183,7 @@
               </td>
             </tr>
             <tr>
-              <td class="modal-inner" colspan="3">
+              <td class="riddle-inner" colspan="3">
               </td>
             </tr>
           </table>

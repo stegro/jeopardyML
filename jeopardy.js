@@ -186,12 +186,28 @@ modal.showRiddle = function(cell){
         var bbox = cell.getBoundingClientRect();
 
         // replace whatever is on the modal screen with clue and solution
-        $('#riddle-modal .modal-inner').html(
+        $('#riddle-modal .riddle-inner').html(
             $(cell).find(".clue").prop("outerHTML") +
                 $(cell).find(".solution").prop("outerHTML")
         )
 
-        $('#riddle-modal .modal-inner').scrollTop(0)
+        // to keep the xml simple, force some formatting: put span around any text
+        if($('#riddle-modal .clue img').length > 0){
+            $('#riddle-modal .clue').html(
+                $('#riddle-modal .clue img')[0].outerHTML +
+                "<span>" + $('#riddle-modal .clue')[0].textContent + "</span>"
+                );
+
+        }
+        if($('#riddle-modal .solution img').length > 0){
+            $('#riddle-modal .solution').html(
+                $('#riddle-modal .solution img')[0].outerHTML +
+                "<span>" + $('#riddle-modal .solution')[0].textContent + "</span>"
+                );
+
+        }
+
+        $('#riddle-modal .riddle-inner').scrollTop(0)
 
         // get access to clue and solution elements
         $('#riddle-modal .clue').css({
