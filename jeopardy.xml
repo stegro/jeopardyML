@@ -7,45 +7,49 @@
   <points>400</points>
   <points>500</points>
 
-  <category title="Category 1">
+  <category title="Examples">
     <riddle>
       <clue>
-        Clue 1 1
+        <img src="nasa_iss.jpg" />
+        The first element of this space station (Credit: NASA) flew to space on Nov. 20 1998.
       </clue>
       <solution>
-        Solution 1 1
+        What is the ISS?
       </solution>
     </riddle>
     <riddle>
       <clue>
-        Clue 1 2
+        <img src="nasa_iss.jpg" style="height:30%" />
+        The first element of this space station flew to space on Nov. 20 1998.(Credit: NASA)
       </clue>
       <solution>
-        Solution 1 2
+        What is the ISS?
       </solution>
     </riddle>
     <riddle>
       <clue>
-        Clue 1 3
+        The first element of this space station (Credit: NASA) flew to space on Nov. 20 1998.
+        <img src="nasa_iss.jpg" />
       </clue>
       <solution>
-        Solution 1 3
+        What is the ISS?
       </solution>
     </riddle>
     <riddle>
       <clue>
-        Clue 1 4
+        The first element of this space station flew to space on Nov. 20 1998.
       </clue>
       <solution>
-        Solution 1 4
+        <img src="nasa_iss.jpg" />
+        What is the ISS? (Credit: NASA)
       </solution>
     </riddle>
     <riddle>
       <clue>
-        Clue 1 5
+        The first element of this space station flew to space on Nov. 20 1998.
       </clue>
       <solution>
-        Solution 1 5
+        What is the ISS?
       </solution>
     </riddle>
   </category>
