@@ -39,9 +39,6 @@
 
       </head>
       <body onload="init();">
-        <audio id="audio-themes" type="audio/mpeg" >
-        </audio>
-
 
         <div id="gameplay">
           <table id="tableau">

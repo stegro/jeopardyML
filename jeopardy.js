@@ -5,6 +5,7 @@ var grades = $('#tableau #question-row').length;
 
 var AUDIO_THINK_THEME = 'think_theme.mp3';
 var AUDIO_THINK_THEME_REMIX = 'think_theme_remix.mp3';
+var current_audio_src = "";
 
 var irow_selector = 0;
 var icol_selector = 0;
@@ -32,6 +33,16 @@ var answer_allow_only_iteam = 0;
 
 var modal = function(){}
 
+String.prototype.hashCode = function() {
+    var hash = 0, i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        chr   = this.charCodeAt(i);
+        hash  = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+};
 
 function init(){
     setTeams();
@@ -85,31 +96,57 @@ function moveSelector(keycode){
 
 function startThemeMusic(filename){
     try{
-        let audio = document.getElementById("audio-themes");
-        console.log("starting audio:" + filename);
-        audio.src = filename;
-        audio.load();
-        audio.loop = true;
-        audio.volume = 0.0;
-        audio.play();
-        $('#audio-themes').animate({volume: 1.0}, 3*1000);
+        // stop the current volume fade animation:
+        $('#'+current_audio_src.hashCode()).stop();
 
-        return true
+        console.log("starting audio:" + filename);
+        console.log("while old src is:" + current_audio_src);
+        console.log(document.getElementsByTagName("audio"));
+
+        // if there is no audio element for this file yet, create one.
+        var filename_hash = filename.hashCode()
+        var audio = document.getElementById(filename_hash);
+        if(audio == null) {
+            var audio = document.createElement('audio');
+            document.body.appendChild(audio);
+            audio.src = filename;
+            audio.setAttribute("id", filename_hash);
+            console.log(audio.id);
+            audio.loop = true;
+            audio.volume = 0.0;
+        }
+        console.log(document.getElementsByTagName("audio"));
+        // if the new sound is not the same as the last one
+        if(filename != current_audio_src) {
+            // then fade out volume of the old one more quickly
+            $('#'+current_audio_src.hashCode()).animate({volume: 0.0},1000, audio.pause);
+            current_audio_src = filename;
+        }
+        // fade in the desired audio
+        console.log(filename_hash);
+        var audio = document.getElementById(filename_hash);
+        audio.play();
+        $('#'+filename_hash).animate({volume: 1.0}, 3*1000);
+
+        return true;
     }catch(err){
         console.log(err);
         console.log(err.message);
-        return false
+        return false;
     }
 }
 
 function stopThemeMusic(){
     try{
-        let audio = document.getElementById("audio-themes");
+        var current_hash = current_audio_src.hashCode();
+        let audio = document.getElementById(current_hash);
         fade_millisec = 8*1000;
-        $('#audio-themes').animate({volume: 0.0}, fade_millisec);
-        setTimeout(function(){
-            document.getElementById("audio-themes").pause();
-        }, fade_millisec);
+        //console.log("stopping audio");
+        $('#'+current_hash).animate({volume: 0.0}, duration=fade_millisec,
+                                   complete=function(){
+            document.getElementById(current_hash).pause();
+            //console.log("audio has stopped");
+        });
     }catch(err){
         console.log(err);
         console.log(err.message);
@@ -466,7 +503,7 @@ modal.setHandlers = function(){
             } else if(e.keyCode == KEYCODE_SPACE){
                 e.preventDefault();
                 fade_millisec = 3000;
-                $('#audio-themes').animate({volume: 0.0}, fade_millisec);
+                $('#'+current_audio_src.hashCode()).animate({volume: 0.0}, fade_millisec);
                 setTimeout(function(){
                     window.history.go(-1);
                 }, fade_millisec);
