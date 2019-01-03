@@ -4,6 +4,7 @@ body {
   height:100%;
   font-family:Verdana, Arial, Helvetica, sans-serif;
   overflow-y:hidden;
+  margin:0px;
 }
 
 .table-cell {
@@ -33,7 +34,7 @@ th#table-cell {
     cursor:pointer;
     border:3px solid black;
     color: #fff;
-    border-radius:5px;
+    border-radius:10px;
 }
 
 
