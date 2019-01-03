@@ -23,6 +23,14 @@ and displaying questions, and managing scores.
  4. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
     All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 
+ 5. (optional) To get a nice background in jeopardy.html,
+    you may want to create a subfolder "logo" and download a logo image into "logo/jeopardy_gold.png".
+    For example the file [https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png](https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png)
+    that is linked at -[https://pixshark.com/jeopardy-logo-2014.htm](https://pixshark.com/jeopardy-logo-2014.htm) or other sites
+    (if the laws of your country allow this).
+    You may also want to edit jeopardy.html and link all your xml files there, to access
+    them more easily during the game.
+
 ### Notes:
 
   * this is made for big screens, not for mobile phones.
@@ -30,7 +38,7 @@ and displaying questions, and managing scores.
     are all defined in the xml file
   * a random cell will be made a "Daily Double". After placing bet, the mechanics
     of solving the riddle is identical to the other cells, except that only the player who chose the cell
-    is allowed to answer. 
+    is allowed to answer.
   * all categories must have same number of questions (i.e. no empty cells in the
     first hand)
   * controls are supposed to be done with keyboard as much as possible, to avoid
@@ -49,7 +57,7 @@ and displaying questions, and managing scores.
  * At the category intro screen:
     - *[Space]* to display the next category title
     - *[ESC]* to leave it
- * At the main screen:
+ * At the main screen (the big table):
     - *[i]* to show category intro again
     - *[s]* to show scores
     - *[o]* to show options
@@ -70,7 +78,7 @@ and displaying questions, and managing scores.
     - change number of teams and hit the button to leave
  * At the winner screen:
     - *[ESC]* to leave it
-    - *[SPACE]* to leave it and go back one page in history, i.e. to the page visited 
+    - *[SPACE]* to leave it and go back one page in history, i.e. to the page visited
       before this xml file. You may want to enlist links to all the rounds you created
       in jeopardy.html, for example, and go back to that page this way.
  * At the Daily Double screen:
@@ -99,9 +107,9 @@ And this is what this game is all about:
 
 ### ToDo:
 
- * display images automatically as large as possible
+ * timers
  * arrange score boxes in a grid
  * proper localisation
  * double jeopardy, final jeopardy
- * test with other browsers
+ * test with other browsers (this is only made for Firefox right now)
  * deal with several teams having the same score on the winner screen
