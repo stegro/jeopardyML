@@ -110,8 +110,8 @@ function startThemeMusic(filename){
         $('#'+current_audio_src.hashCode()).stop();
 
         console.log("starting audio:" + filename);
-        console.log("while old src is:" + current_audio_src);
-        console.log(document.getElementsByTagName("audio"));
+        // console.log("while old src is:" + current_audio_src);
+        // console.log(document.getElementsByTagName("audio"));
 
         // if there is no audio element for this file yet, create one.
         var filename_hash = filename.hashCode()
@@ -132,7 +132,6 @@ function startThemeMusic(filename){
             current_audio_src = filename;
         }
         // fade in the desired audio
-        console.log(filename_hash);
         var audio = document.getElementById(filename_hash);
         audio.play();
         $('#'+filename_hash).animate({volume: 1.0}, 3*1000);
