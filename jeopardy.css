@@ -71,22 +71,22 @@ th#table-cell {
     color: yellow;
 }
 .solved-by-team-4 {
-    background-color: orange;
-}
-.team-4 {
-    color: orange;
-}
-.solved-by-team-5 {
     background-color: purple;
 }
-.team-5 {
+.team-4 {
     color: purple;
 }
+.solved-by-team-5 {
+    background-color: saddlebrown;
+}
+.team-5 {
+    color: saddlebrown;
+}
 .solved-by-team-6 {
-    background-color: brown;
+    background-color: DeepPink;
 }
 .team-6 {
-    color: brown;
+    color: DeepPink;
 }
 
 
