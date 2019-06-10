@@ -23,7 +23,11 @@ and displaying questions, and managing scores.
  4. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
     All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 
- 5. (optional) To get a nice background in jeopardy.html,
+ 5. The page opens a javascript Popup Window. If you usually block Popups, you may
+    want to allow this one. The Window permanently displays the respective solution.
+    You can move it to a second screen which only the game master can see.
+
+ 6. (optional) To get a nice background in jeopardy.html,
     you may want to create a subfolder "logo" and download a logo image into "logo/jeopardy_gold.png".
     For example the file [https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png](https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png)
     that is linked at -[https://pixshark.com/jeopardy-logo-2014.htm](https://pixshark.com/jeopardy-logo-2014.htm) or other sites
@@ -113,3 +117,7 @@ And this is what this game is all about:
  * double jeopardy, final jeopardy
  * test with other browsers (this is only made for Firefox right now)
  * deal with several teams having the same score on the winner screen
+ * kill any sound that was embedded in clue or solution when leaving
+ * get back the solution pop, if it was accidentally closed.
+ * solution popup with white font on black screen, for readability and
+   less ambient light.

@@ -31,6 +31,8 @@ var iteam = 1;
 var negative_points_flag = false;
 var answer_allow_only_iteam = 0;
 
+var popup_window = null;
+
 var modal = function(){}
 
 String.prototype.hashCode = function() {
@@ -51,6 +53,14 @@ function init(){
     var idaily_double = parseInt(categories * grades * Math.random());
     $cell = $($('#tableau #question-row .table-cell').get(idaily_double))
     $cell.addClass('daily-double');
+
+    popup_window = open('', 'jeoparty-solution-popup', 'height=400,width=400,resizable=yes,status=no,menubar=no,location=no,title="Solution"');
+    print_popup('Solution will be displayed here. Close this if you do not need it. You may want to see this on a hidden screen.');
+}
+
+function print_popup(text){
+    popup_window.document.write(text);
+    popup_window.document.close(); // needed for chrome and safari
 }
 
 function setTeams(){
@@ -111,11 +121,10 @@ function startThemeMusic(filename){
             document.body.appendChild(audio);
             audio.src = filename;
             audio.setAttribute("id", filename_hash);
-            console.log(audio.id);
+            // console.log(audio.id);
             audio.loop = true;
             audio.volume = 0.0;
         }
-        console.log(document.getElementsByTagName("audio"));
         // if the new sound is not the same as the last one
         if(filename != current_audio_src) {
             // then fade out volume of the old one more quickly
@@ -277,6 +286,8 @@ modal.showRiddle = function(cell){
             });
         }, 500);
     }
+
+    print_popup($('#riddle-modal .solution')[0].innerHTML);
 }
 
 modal.hideRiddle = function(){
