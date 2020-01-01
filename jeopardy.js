@@ -290,6 +290,9 @@ modal.showRiddle = function(cell){
 }
 
 modal.hideRiddle = function(){
+    // make sure all teams may answer again after daily double
+    answer_allow_only_iteam = 0;
+
     $('#riddle-modal').hide()
     $('#riddle-modal').removeClass("expanded");
     $('#riddle-modal').css({
