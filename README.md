@@ -13,6 +13,13 @@ because there is no need to. The task of selecting the player who has
 hit his knob the quickest has nothing to do with the task of selecting
 and displaying questions, and managing scores.
 
+### To make it work: Safety Policy
+
+There has been a Firefox security patch which restricts local file loads by local pages.
+In order to use jeopardyML on your local comuter you must roll back that patch (at least temporarily):
+In Firefox, open the `about:config` settings, search for the key `privacy.file_unique_origin` and set its value to `False`.
+
+For the Chrome browser, one way to make this game work is to use the command line argument `--allow-file-access-from-files`.
 
 ### Instructions:
 
