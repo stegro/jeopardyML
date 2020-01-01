@@ -59,8 +59,10 @@ function init(){
 }
 
 function print_popup(text){
-    popup_window.document.write(text);
-    popup_window.document.close(); // needed for chrome and safari
+    if(popup_window != null) {
+        popup_window.document.write(text);
+        popup_window.document.close(); // needed for chrome and safari
+    }
 }
 
 function setTeams(){
