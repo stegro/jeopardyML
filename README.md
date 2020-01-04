@@ -19,6 +19,11 @@ There has been a Firefox security patch which restricts local file loads by loca
 In order to use jeopardyML on your local comuter you must roll back that patch (at least temporarily):
 In Firefox, open the `about:config` settings, search for the key `privacy.file_unique_origin` and set its value to `False`.
 
+Firefox allows to disable automatic playback of sounds on page
+load. To get music right at the start of the game, you must un-block
+autoplay. Instructions can be found at
+https://support.mozilla.org/en-US/kb/block-autoplay
+
 For the Chrome browser, one way to make this game work is to use the command line argument `--allow-file-access-from-files`.
 
 ### Instructions:
