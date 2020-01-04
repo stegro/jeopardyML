@@ -4,6 +4,7 @@ This is a simple game to host your own jeopardy game
 show for your friends. Offline, no server, no garbage, no
 installation, data and rendering is separated. You just have to open a single
 file in your webbrowser.
+All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 
 This does not come with any game data, it is up to you to invent
 categories, clues and solutions.
@@ -28,24 +29,32 @@ For the Chrome browser, one way to make this game work is to use the command lin
 
 ### Instructions:
 
+#### Preparations:
+
  1. You copy jeopardy.xml into a new file, say myjeopardy.xml
  2. Edit myjeopardy.xml with a texteditor and fill it with your own content.
  3. (optional) download music theme mp3 files from somewhere and put them into the same
     folder, see the *Notes* section
- 4. You open myjeopardy.xml with your webbrowser and make it fullscreen (try pressing *[F11]*)
-    All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
-
- 5. The page opens a javascript Popup Window. If you usually block Popups, you may
-    want to allow this one. The Window permanently displays the respective solution.
-    You can move it to a second screen which only the game master can see.
-
- 6. (optional) To get a nice background in jeopardy.html,
+ 4. (optional) To get a nice background in jeopardy.html,
     you may want to create a subfolder "logo" and download a logo image into "logo/jeopardy_gold.png".
     For example the file [https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png](https://www.logolynx.com/images/logolynx/d7/d7d438a124190a7a0fae5a8fdded33ea.png)
     that is linked at -[https://pixshark.com/jeopardy-logo-2014.htm](https://pixshark.com/jeopardy-logo-2014.htm) or other sites
     (if the laws of your country allow this).
     You may also want to edit jeopardy.html and link all your xml files there, to access
     them more easily during the game.
+
+#### How to be game master:
+
+ 1. Make sure you know the official rules of the jeopardy quiz game. Decide which rules you want to follow for your game and which not.
+ 1. Make sure your browser allows to read local pages to read local files. See the note in the section above.
+ 2. Make sure you have read the section *Controls* below and you are familier with the relevant keyboard buttons.
+ 2. Open the welcome page jeopardy.html or just directly your myjeopardy.xml page with your webbrowser.
+ 3. Make the view fullscreen (try pressing *[F11]*).
+ 4. The page opens a javascript popup window to secretly display the solution.
+    Although you usually block popup windows, you may
+    want to allow this one. The Window permanently displays the respective solution.
+    You can move it to a second screen which only the game master can see.
+
 
 ### Notes:
 
