@@ -78,6 +78,19 @@ function setTeams(){
     }
 }
 
+function animateBuzzerVisualOut(){
+    if($("#player-color-visualisation").hasClass("is-triggered")){
+        $('#player-color-visualisation').addClass("buzzer-visual-animation");
+        setTimeout(function(){
+            $('#player-color-visualisation').removeClass("buzzer-visual-animation");
+            $('#player-color-visualisation').hide();
+            resetBuzzerVisual();
+
+        // this timeout should match the animation duration:
+    }, 1500)
+    }
+}
+
 function animateSymbol(text, extraclass){
     $('.symbol-box').html(text);
 
@@ -582,6 +595,7 @@ modal.setHandlers = function(){
                     $score.text(Math.max(0,score - val));
                     var x_sign = "&#x2716;";
                     animateSymbol(x_sign, "team-"+iteam);
+                    animateBuzzerVisualOut();
 
                     negative_points_flag = false;
                 }else{
@@ -590,6 +604,7 @@ modal.setHandlers = function(){
                     $score.text(score + val);
                     var check_sign = "&#x2714;";
                     animateSymbol(check_sign, "team-"+iteam);
+                    animateBuzzerVisualOut();
                     // setTimeout(function(){
                     //     animateSymbol(""+val, "team-"+iteam);
                     // },1500);
@@ -599,7 +614,6 @@ modal.setHandlers = function(){
                     $('#riddle-modal').removeClass("waiting-for-buzzers");
 
                 }
-                resetBuzzerVisual();
             }
         });
     }else if($('#category-intro-modal').hasClass("expanded")) {

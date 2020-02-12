@@ -613,3 +613,17 @@ kbd
     border-width: 100px;
     border-style: solid;
 }
+
+@keyframes buzz-vis-animation {
+    0% {border-width: 100px;
+        opacity:1;
+       }
+    100% {border-width: 100px;
+          opacity:0;
+        }
+}
+.buzzer-visual-animation {
+    animation-name: buzz-vis-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+}
