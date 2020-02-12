@@ -12,20 +12,21 @@ body {
     background-color:#2a3698;
 }
 
-th#table-cell {
-
-}
 .points {
     font-size: 40px;
 }
 #question-row {
-    /* height: calc((100% - var(--header_height)) / var(--grades)); */
-    height: calc(100% / (var(--grades)+1));
+    /* height: calc(100% / (var(--grades) + 1)); */
+
+    border:3px solid black;
 }
 #categories {
     /* height: var(--header_height); */
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
+
+    border-left:3px solid transparent;
+    border-right:3px solid transparent;
 }
 #question-row .table-cell {
     font-size: 24px;
@@ -38,14 +39,16 @@ th#table-cell {
 }
 
 
-#categories {
-    border-left:3px solid transparent;
-    border-right:3px solid transparent;
-}
 
 #categories .table-cell {
+    padding: 0px 0px 0px 0px;
     border-left:3px solid transparent;
     border-right:3px solid transparent;
+
+    font-size:34px;
+    text-align:center;
+    color:#fff;
+    vertical-align: bottom;
 }
 
 .solved-by-team-1 {
@@ -126,12 +129,16 @@ th#table-cell {
     border-collapse: separate;
     border-spacing: 0px;
     border:3px solid black;
-    table-layout: fixed;
     padding: 0px 0px 0px 0px ;
     margin: 0px 0px 0px 0px ;
     background-color: black;
 }
-
+#tableau{
+    table-layout: auto;
+}
+#title-tableau {
+    table-layout: fixed;
+}
 #daily-double-modal {
     background-color:rgba(0,0,0,.5);
     flex-wrap: wrap;
@@ -222,16 +229,7 @@ html, body {
     height:100%;
 }
 
-#categories .table-cell {
-    font-size:34px;
-    text-align:center;
-    color:#fff;
-    vertical-align: bottom;
-}
 
-#question-row {
-    border:3px solid black;
-}
 
 
 .hide {
