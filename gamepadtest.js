@@ -64,6 +64,8 @@ function updateStatus() {
                 iteam = Math.floor(i / 5)+1;
                 ibutton = Math.floor(i % 5);
                 BIG_BUZZER_IBUTTON = 0;
+                if(answer_allow_only_iteam > 0 && iteam != answer_allow_only_iteam)
+                    continue;
 
                 console.log("Button pressed" +i+"; iteam:" + iteam+"; ibutton:" + ibutton);
 
