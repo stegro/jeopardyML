@@ -9,15 +9,16 @@ All the rendering is done by the browser via XSLT, XHTML, CSS and Javascript.
 This does not come with any game data, it is up to you to invent
 categories, clues and solutions.
 
-Buzzers: This thing does not interact in any way with buzzer hardware
+Buzzers: This thing does not necessarily interact with buzzer hardware
 because there is no need to. The task of selecting the player who has
 hit his knob the quickest has nothing to do with the task of selecting
-and displaying questions, and managing scores.
+and displaying questions, and managing scores. However, by now there
+is indeed support for the wired Playstation2 Buzz USB Buzzers.
 
 ### To make it work: Safety Policy
 
 There has been a Firefox security patch which restricts local file loads by local pages.
-In order to use jeopardyML on your local comuter you must roll back that patch (at least temporarily):
+In order to use jeopardyML on your local computer you must roll back that patch (at least temporarily):
 In Firefox, open the `about:config` settings, search for the key `privacy.file_unique_origin` and set its value to `False`.
 
 Firefox allows to disable automatic playback of sounds on page
@@ -54,6 +55,11 @@ For the Chrome browser, one way to make this game work is to use the command lin
     Although you usually block popup windows, you may
     want to allow this one. The Window permanently displays the respective solution.
     You can move it to a second screen which only the game master can see.
+ 5. Select the question your players would like using the arrow keys and the *[space]* bar.
+ 6. Read the question alound at press *[r]* right after to allow for buzzer hits, in case you are using those USB buzzers.
+ 7. If the answer is correct, press the number of the player, if not, press *[n]* and then the number.
+ 8. From time to time you may want to show the scores screen *[s]*.
+ 9. As soon as all cells have been answered, show the winner screen *[w]* and thank everyone for joining the game.
 
 
 ### Notes:
@@ -118,7 +124,7 @@ And this is what this game is all about:
  * At the 'riddle' screen initially only the clue is displayed
     - *[ESC]* to leave without solving
     - *[Space]* to reveal the solution
-    - *[r]* to reset the buzzer visuals (if there are any) and allow for new buzzer hits
+    - *[r]* to reset the buzzer visuals (if there are any) and allow for new buzzer hits.
     - *[1]*, *[2]* or any other numeric key to give team 1/2/... the points and return
     - *[Ctrl]+[1]* to substract points from team 1 (and analogously for the other teams)
     - Pressing first *[n]* and then a number (within 3 seconds) will also yield negative points for
@@ -126,7 +132,7 @@ And this is what this game is all about:
       infrared (IR) remote which is mapped to keyboard keys.
     - *[0]* to return after having revealed the solution, if nobody has solved
 
-That is, if you want to play with Playstation2 USB buzzers, then you have to press *[r]* right after reading the question aloud. It is only after that that players can hit their buttons.
+That is, if you want to play with Playstation2 USB buzzers, then you have to press *[r]* right after reading the question aloud. Only after that that players can hammer on their buzzer buttons.
 
 ### Acknowledgements:
 
@@ -138,10 +144,12 @@ That is, if you want to play with Playstation2 USB buzzers, then you have to pre
  * timers
  * arrange score boxes in a grid
  * proper localisation
- * double jeopardy, final jeopardy
+ * final jeopardy
  * test with other browsers (this is only made for Firefox right now)
  * deal with several teams having the same score on the winner screen
  * kill any sound that was embedded in clue or solution when leaving
  * get back the solution pop, if it was accidentally closed.
  * solution popup with white font on black screen, for readability and
    less ambient light.
+ * allow for other joysticks, i.e. other button indices
+ * make header row slimmer
