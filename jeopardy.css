@@ -54,6 +54,9 @@ th#table-cell {
 .team-1 {
     color:green
 }
+.buzzer-border-team-1 {
+    border-color:green
+}
 .empty .points{
     opacity:0;
 }
@@ -64,11 +67,17 @@ th#table-cell {
 .team-2 {
     color: red;
 }
+.buzzer-border-team-2 {
+    border-color: red;
+}
 .solved-by-team-3 {
     background-color: yellow;
 }
 .team-3 {
     color: yellow;
+}
+.buzzer-border-team-3 {
+    border-color: yellow;
 }
 .solved-by-team-4 {
     background-color: purple;
@@ -76,17 +85,26 @@ th#table-cell {
 .team-4 {
     color: purple;
 }
+.buzzer-border-team-4 {
+    border-color: purple;
+}
 .solved-by-team-5 {
     background-color: saddlebrown;
 }
 .team-5 {
     color: saddlebrown;
 }
+.buzzer-border-team-5 {
+    border-color: saddlebrown;
+}
 .solved-by-team-6 {
     background-color: DeepPink;
 }
 .team-6 {
     color: DeepPink;
+}
+.buzzer-border-team-6 {
+    border-color: DeepPink;
 }
 
 
@@ -583,4 +601,17 @@ kbd
     animation-duration: 5.0s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+}
+
+#player-color-visualisation {
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    justify-content: center;
+    align-items:center;
+    border-width: 100px;
+    border-style: solid;
 }

@@ -18,6 +18,7 @@ var KEYCODE_o = 79
 var KEYCODE_s = 83
 var KEYCODE_w = 87
 var KEYCODE_n = 78
+var KEYCODE_r = 82
 var KEYCODE_0 = 48
 
 var KEYCODE_left = 37
@@ -465,6 +466,15 @@ modal.hideCategoryIntro = function(){
     stopThemeMusic();
 }
 
+function resetBuzzerVisual(){
+    $('#player-color-visualisation').hide();
+    $("#player-color-visualisation").removeClass("is-triggered");
+    for(var iteam = 1; iteam <= nteams; iteam++) {
+        $("#player-color-visualisation").removeClass("buzzer-border-team-"+iteam);
+    }
+}
+
+
 modal.setHandlers = function(){
     $(window).off("keydown.riddle-modal");
     $(window).off("keydown.body");
@@ -529,6 +539,8 @@ modal.setHandlers = function(){
             if(e.keyCode == KEYCODE_ESC){
                 e.preventDefault();
                 modal.hideRiddle();
+                resetBuzzerVisual();
+                $('#riddle-modal').removeClass("waiting-for-buzzers");
             } else if(e.keyCode == KEYCODE_SPACE){
                 e.preventDefault();
                 modal.revealSolution();
@@ -536,12 +548,18 @@ modal.setHandlers = function(){
                 e.preventDefault();
                 $(".selected-cell").addClass("empty");
                 modal.hideRiddle();
+                resetBuzzerVisual();
+                $('#riddle-modal').removeClass("waiting-for-buzzers");
             }else if(e.keyCode == KEYCODE_n){
                 negative_points_flag = true;
                 // deactivate it after a couple of seconds
                 setTimeout(function(){
                     negative_points_flag = false;
                 },3000);
+            }else if(e.keyCode == KEYCODE_r){
+                resetBuzzerVisual();
+                // and wait for new buzzer hits
+                $('#riddle-modal').addClass("waiting-for-buzzers");
 
             } else if(e.keyCode >= KEYCODE_1 && e.keyCode < KEYCODE_1 + nteams){
                 e.preventDefault();
@@ -549,6 +567,9 @@ modal.setHandlers = function(){
 
                 // make sure only the player who is allowed to answers the daily double
                 if(answer_allow_only_iteam > 0 && iteam != answer_allow_only_iteam)
+                    return
+                if($("#player-color-visualisation").hasClass("is-triggered") &&
+                   !$("#player-color-visualisation").hasClass("buzzer-border-team-"+iteam))
                     return
 
                 var $score = $("#teams-modal #team"+iteam).find(".score")
@@ -575,8 +596,10 @@ modal.setHandlers = function(){
                     setTimeout(modal.hideRiddle,
                                // this timeout should match the animation duration:
                                1*1500);
+                    $('#riddle-modal').removeClass("waiting-for-buzzers");
 
                 }
+                resetBuzzerVisual();
             }
         });
     }else if($('#category-intro-modal').hasClass("expanded")) {

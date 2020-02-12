@@ -36,6 +36,8 @@
         <script src="jquery.min.js"></script>
         <script src="jeopardy.js" ></script>
         <script type="text/javascript" src="confetti.js"></script>
+        <script type="text/javascript" src="gamepadtest.js"></script>
+
 
       </head>
       <body onload="init();">
@@ -227,6 +229,10 @@
           </p>
           </div>
         </div>
+
+        <div id="player-color-visualisation">
+        </div>
+
 
       </body>
     </html>

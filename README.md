@@ -118,12 +118,15 @@ And this is what this game is all about:
  * At the 'riddle' screen initially only the clue is displayed
     - *[ESC]* to leave without solving
     - *[Space]* to reveal the solution
+    - *[r]* to reset the buzzer visuals (if there are any) and allow for new buzzer hits
     - *[1]*, *[2]* or any other numeric key to give team 1/2/... the points and return
     - *[Ctrl]+[1]* to substract points from team 1 (and analogously for the other teams)
     - Pressing first *[n]* and then a number (within 3 seconds) will also yield negative points for
       the respective team. This may be useful if the showmaster is using an
       infrared (IR) remote which is mapped to keyboard keys.
     - *[0]* to return after having revealed the solution, if nobody has solved
+
+That is, if you want to play with Playstation2 USB buzzers, then you have to press *[r]* right after reading the question aloud. It is only after that that players can hit their buttons.
 
 ### Acknowledgements:
 
