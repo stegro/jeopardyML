@@ -89,7 +89,7 @@ For the Chrome browser, one way to make this game work is to use the command lin
     - *[Space]* to display the next category title
     - *[ESC]* to leave it
  * At the main screen (the big table):
-    - *[i]* to show category intro again
+    - *[F1]* to show category intro again
     - *[s]* to show scores
     - *[o]* to show options
     - *[w]* to show winner screen (preferably at end of the game)
@@ -102,6 +102,7 @@ For the Chrome browser, one way to make this game work is to use the command lin
     - "[up]","[down]","[left]","[right]", keyboard arrows to move the cell selector
  * At the scores screen:
     - *[ESC]* to leave it
+    - *[F1]* to proceed with category intro
     - enter credits and team names as you like
     - click the + and - buttons to add and subtract scores according to the value of
        the selected cell

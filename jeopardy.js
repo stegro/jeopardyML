@@ -13,7 +13,7 @@ var icol_selector = 0;
 var KEYCODE_ESC = 27
 var KEYCODE_SPACE = 32
 var KEYCODE_1 = 49
-var KEYCODE_i = 73
+var KEYCODE_F1 = 112
 var KEYCODE_o = 79
 var KEYCODE_s = 83
 var KEYCODE_w = 87
@@ -49,7 +49,6 @@ String.prototype.hashCode = function() {
 
 function init(){
     setTeams();
-    modal.showCategoryIntro();
 
     var idaily_double = parseInt(categories * grades * Math.random());
     $cell = $($('#tableau #question-row .table-cell').get(idaily_double))
@@ -57,6 +56,8 @@ function init(){
 
     popup_window = open('', 'jeoparty-solution-popup', 'height=400,width=400,resizable=yes,status=no,menubar=no,location=no,title="Solution"');
     print_popup('Solution will be displayed here. Close this if you do not need it. You may want to see this on a hidden screen.');
+
+    modal.showScores();
 }
 
 function print_popup(text){
@@ -506,7 +507,12 @@ modal.setHandlers = function(){
             if(e.keyCode == KEYCODE_ESC){
                 e.preventDefault();
                 modal.hideScores();
+            }else if(e.keyCode == KEYCODE_F1){
+                e.preventDefault();
+                modal.hideScores();
+                modal.showCategoryIntro();
             }
+
         });
     }else if($('#daily-double-modal').hasClass("expanded")) {
         $(window).on("keydown.daily-double-modal", function(e){
@@ -636,7 +642,8 @@ modal.setHandlers = function(){
         $(window).on("keydown.body", function(e){
             // for finding keycodes:
             // alert(e.keyCode);
-            if(e.keyCode == KEYCODE_i){
+
+            if(e.keyCode == KEYCODE_F1){
                 e.preventDefault();
                 modal.showCategoryIntro();
 
