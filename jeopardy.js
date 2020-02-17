@@ -373,13 +373,15 @@ modal.showWinner = function(){
     $('#podium').removeClass("podium-in-animation");
 
     $('#winner-team-rank1').html(
-        $("#team"+iteams[0]).prop("outerHTML")
+        // attention, this must be the element below teams-modal,
+        // because there is another one in the double jeopardy screen.
+        $("#teams-modal #team"+iteams[0]).prop("outerHTML")
     );
     $('#winner-team-rank2').html(
-        $("#team"+iteams[1]).prop("outerHTML")
+        $("#teams-modal #team"+iteams[1]).prop("outerHTML")
     );
     $('#winner-team-rank3').html(
-        $("#team"+iteams[2]).prop("outerHTML")
+        $("#teams-modal #team"+iteams[2]).prop("outerHTML")
     );
     $('#winner-modal .score-control').hide()
 
