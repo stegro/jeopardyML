@@ -83,13 +83,13 @@ body {
     border-color: yellow;
 }
 .solved-by-team-4 {
-    background-color: purple;
+    background-color: lightblue;
 }
 .team-4 {
-    color: purple;
+    color: lightblue;
 }
 .buzzer-border-team-4 {
-    border-color: purple;
+    border-color: lightblue;
 }
 .solved-by-team-5 {
     background-color: saddlebrown;
