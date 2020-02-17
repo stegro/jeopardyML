@@ -72,6 +72,8 @@ function updateStatus() {
                 // listen to buttons only when the riddle-modal screen is shown
                 if(ibutton == BIG_BUZZER_IBUTTON && $('#riddle-modal').hasClass("waiting-for-buzzers")) {
                     if(!$("#player-color-visualisation").hasClass("is-triggered")){
+                        startAudio("sounds/buzzer"+iteam+".mp3", false);
+
                         $("#player-color-visualisation").addClass("buzzer-border-team-"+iteam);
                         $("#player-color-visualisation").addClass("is-triggered");
                         $('#player-color-visualisation').css({

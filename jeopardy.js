@@ -120,7 +120,8 @@ function moveSelector(keycode){
     $($($('#tableau #question-row').get(irow_selector)).children().get(icol_selector)).addClass('selected-cell')
 }
 
-function startThemeMusic(filename){
+function startAudio(filename, loop){
+    if (typeof(loop)==='undefined') loop = true;
     try{
         // stop the current volume fade animation:
         $('#'+current_audio_src.hashCode()).stop();
@@ -138,7 +139,7 @@ function startThemeMusic(filename){
             audio.src = filename;
             audio.setAttribute("id", filename_hash);
             // console.log(audio.id);
-            audio.loop = true;
+            audio.loop = loop;
             audio.volume = 0.0;
         }
         // if the new sound is not the same as the last one
@@ -265,7 +266,6 @@ modal.showRiddle = function(cell){
                 $('#riddle-modal .solution img')[0].outerHTML +
                 "<span>" + $('#riddle-modal .solution')[0].textContent + "</span>"
                 );
-
         }
 
         $('#riddle-modal .riddle-inner').scrollTop(0)
@@ -318,7 +318,7 @@ modal.hideRiddle = function(){
 }
 
 modal.showScores = function(){
-    startThemeMusic(AUDIO_THINK_THEME);
+    startAudio(AUDIO_THINK_THEME);
     $('#gameplay').css({"filter": "blur(5px)",
                         'transition':'all 2s ease-in'
                        });
@@ -345,8 +345,8 @@ modal.hideScores = function(){
 
 modal.showWinner = function(){
     // if there is a remix, use that, otherwise try the default audio theme
-    if(!startThemeMusic(AUDIO_THINK_THEME_REMIX))
-        startThemeMusic(AUDIO_THINK_THEME);
+    if(!startAudio(AUDIO_THINK_THEME_REMIX))
+        startAudio(AUDIO_THINK_THEME);
 
     $('#gameplay').css("filter", "blur(10px)");
     $('#winner-modal').css({
@@ -431,7 +431,10 @@ modal.hideOptions = function(){
 }
 
 modal.showCategoryIntro = function(){
-    startThemeMusic(AUDIO_THINK_THEME);
+    // on page load, the sound is not played but instead there is an error:
+    //AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+    startAudio(AUDIO_THINK_THEME);
+
     $('#gameplay').css("filter", "blur(20px)");
     $('#category-intro-modal').css({
         "display": "flex"
