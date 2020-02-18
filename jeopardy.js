@@ -567,6 +567,7 @@ modal.setHandlers = function(){
                 $('#riddle-modal').removeClass("waiting-for-buzzers");
             } else if(e.keyCode == KEYCODE_SPACE){
                 e.preventDefault();
+                animateBuzzerVisualOut();
                 modal.revealSolution();
             }else if(e.keyCode == KEYCODE_0){
                 e.preventDefault();
